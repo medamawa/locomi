@@ -3,19 +3,45 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1824CA392467098800267D5F /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1824CA382467098800267D5F /* Utility.swift */; };
+		1848D1A02459E02800592B76 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1848D19F2459E02800592B76 /* UserInfo.swift */; };
+		1848D1A2245B207D00592B76 /* Follows.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1848D1A1245B207D00592B76 /* Follows.swift */; };
+		18B6FAFE245B2A4F005AE556 /* Follow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B6FAFD245B2A4F005AE556 /* Follow.swift */; };
+		18B6FB00245B390E005AE556 /* Followers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B6FAFF245B390E005AE556 /* Followers.swift */; };
+		18B6FB02245C4D59005AE556 /* ComicInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B6FB01245C4D59005AE556 /* ComicInfo.swift */; };
 		18D6BB1B24567758003EBA1E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D6BB1A24567758003EBA1E /* AppDelegate.swift */; };
 		18D6BB1D24567758003EBA1E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D6BB1C24567758003EBA1E /* SceneDelegate.swift */; };
 		18D6BB1F24567758003EBA1E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D6BB1E24567758003EBA1E /* ContentView.swift */; };
 		18D6BB212456775D003EBA1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18D6BB202456775D003EBA1E /* Assets.xcassets */; };
 		18D6BB242456775D003EBA1E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18D6BB232456775D003EBA1E /* Preview Assets.xcassets */; };
 		18D6BB272456775D003EBA1E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18D6BB252456775D003EBA1E /* LaunchScreen.storyboard */; };
+		18D6BB30245677FA003EBA1E /* Struct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D6BB2F245677FA003EBA1E /* Struct.swift */; };
+		18D6BB3224567825003EBA1E /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D6BB3124567825003EBA1E /* APIRequest.swift */; };
+		18D6BB3424567848003EBA1E /* KeyChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D6BB3324567848003EBA1E /* KeyChain.swift */; };
+		18D6BB3624567875003EBA1E /* ComicAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D6BB3524567875003EBA1E /* ComicAnnotation.swift */; };
+		18D6BB3924567892003EBA1E /* Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D6BB3824567892003EBA1E /* Register.swift */; };
+		18D6BB3B245678AE003EBA1E /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D6BB3A245678AE003EBA1E /* Login.swift */; };
+		18D6BB3D245678CA003EBA1E /* UsersList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D6BB3C245678CA003EBA1E /* UsersList.swift */; };
+		18D6BB3F245678EC003EBA1E /* ComicsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D6BB3E245678EC003EBA1E /* ComicsList.swift */; };
+		18D6BB4124567904003EBA1E /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D6BB4024567904003EBA1E /* MapView.swift */; };
+		18D6BB4424567930003EBA1E /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D6BB4324567930003EBA1E /* Coordinator.swift */; };
+		18D6BB4724567953003EBA1E /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D6BB4624567953003EBA1E /* LocationManager.swift */; };
+		18D6BB4A245679C7003EBA1E /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 18D6BB49245679C7003EBA1E /* KeychainAccess */; };
+		18D6BB4E2456C59C003EBA1E /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D6BB4D2456C59C003EBA1E /* Post.swift */; };
+		18D6BB5024586B63003EBA1E /* SpecifiedUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D6BB4F24586B63003EBA1E /* SpecifiedUser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1824CA382467098800267D5F /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
+		1848D19F2459E02800592B76 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		1848D1A1245B207D00592B76 /* Follows.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Follows.swift; sourceTree = "<group>"; };
+		18B6FAFD245B2A4F005AE556 /* Follow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Follow.swift; sourceTree = "<group>"; };
+		18B6FAFF245B390E005AE556 /* Followers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Followers.swift; sourceTree = "<group>"; };
+		18B6FB01245C4D59005AE556 /* ComicInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicInfo.swift; sourceTree = "<group>"; };
 		18D6BB1724567758003EBA1E /* locomi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = locomi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18D6BB1A24567758003EBA1E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18D6BB1C24567758003EBA1E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +50,19 @@
 		18D6BB232456775D003EBA1E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		18D6BB262456775D003EBA1E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		18D6BB282456775D003EBA1E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		18D6BB2F245677FA003EBA1E /* Struct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Struct.swift; sourceTree = "<group>"; };
+		18D6BB3124567825003EBA1E /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
+		18D6BB3324567848003EBA1E /* KeyChain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChain.swift; sourceTree = "<group>"; };
+		18D6BB3524567875003EBA1E /* ComicAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicAnnotation.swift; sourceTree = "<group>"; };
+		18D6BB3824567892003EBA1E /* Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Register.swift; sourceTree = "<group>"; };
+		18D6BB3A245678AE003EBA1E /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
+		18D6BB3C245678CA003EBA1E /* UsersList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersList.swift; sourceTree = "<group>"; };
+		18D6BB3E245678EC003EBA1E /* ComicsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicsList.swift; sourceTree = "<group>"; };
+		18D6BB4024567904003EBA1E /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		18D6BB4324567930003EBA1E /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		18D6BB4624567953003EBA1E /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		18D6BB4D2456C59C003EBA1E /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		18D6BB4F24586B63003EBA1E /* SpecifiedUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecifiedUser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,12 +70,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18D6BB4A245679C7003EBA1E /* KeychainAccess in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1824CA372467096B00267D5F /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				1824CA382467098800267D5F /* Utility.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		18D6BB0E24567758003EBA1E = {
 			isa = PBXGroup;
 			children = (
@@ -56,9 +104,14 @@
 		18D6BB1924567758003EBA1E /* locomi */ = {
 			isa = PBXGroup;
 			children = (
+				1824CA372467096B00267D5F /* Utilities */,
+				18D6BB452456793F003EBA1E /* Managers */,
+				18D6BB4224567918003EBA1E /* Coordinators */,
+				18D6BB3724567884003EBA1E /* Views */,
+				18D6BB2E245677D1003EBA1E /* Models */,
+				18D6BB1E24567758003EBA1E /* ContentView.swift */,
 				18D6BB1A24567758003EBA1E /* AppDelegate.swift */,
 				18D6BB1C24567758003EBA1E /* SceneDelegate.swift */,
-				18D6BB1E24567758003EBA1E /* ContentView.swift */,
 				18D6BB202456775D003EBA1E /* Assets.xcassets */,
 				18D6BB252456775D003EBA1E /* LaunchScreen.storyboard */,
 				18D6BB282456775D003EBA1E /* Info.plist */,
@@ -73,6 +126,52 @@
 				18D6BB232456775D003EBA1E /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		18D6BB2E245677D1003EBA1E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				18D6BB2F245677FA003EBA1E /* Struct.swift */,
+				18D6BB3124567825003EBA1E /* APIRequest.swift */,
+				18D6BB3324567848003EBA1E /* KeyChain.swift */,
+				18D6BB3524567875003EBA1E /* ComicAnnotation.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		18D6BB3724567884003EBA1E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				18D6BB3824567892003EBA1E /* Register.swift */,
+				18D6BB3A245678AE003EBA1E /* Login.swift */,
+				18B6FAFD245B2A4F005AE556 /* Follow.swift */,
+				1848D1A1245B207D00592B76 /* Follows.swift */,
+				18B6FAFF245B390E005AE556 /* Followers.swift */,
+				18D6BB3C245678CA003EBA1E /* UsersList.swift */,
+				1848D19F2459E02800592B76 /* UserInfo.swift */,
+				18D6BB4F24586B63003EBA1E /* SpecifiedUser.swift */,
+				18D6BB3E245678EC003EBA1E /* ComicsList.swift */,
+				18B6FB01245C4D59005AE556 /* ComicInfo.swift */,
+				18D6BB4024567904003EBA1E /* MapView.swift */,
+				18D6BB4D2456C59C003EBA1E /* Post.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		18D6BB4224567918003EBA1E /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				18D6BB4324567930003EBA1E /* Coordinator.swift */,
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		18D6BB452456793F003EBA1E /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				18D6BB4624567953003EBA1E /* LocationManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -91,6 +190,9 @@
 			dependencies = (
 			);
 			name = locomi;
+			packageProductDependencies = (
+				18D6BB49245679C7003EBA1E /* KeychainAccess */,
+			);
 			productName = locomi;
 			productReference = 18D6BB1724567758003EBA1E /* locomi.app */;
 			productType = "com.apple.product-type.application";
@@ -119,6 +221,9 @@
 				Base,
 			);
 			mainGroup = 18D6BB0E24567758003EBA1E;
+			packageReferences = (
+				18D6BB48245679C7003EBA1E /* XCRemoteSwiftPackageReference "KeychainAccess" */,
+			);
 			productRefGroup = 18D6BB1824567758003EBA1E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -146,9 +251,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18D6BB3624567875003EBA1E /* ComicAnnotation.swift in Sources */,
+				18D6BB4124567904003EBA1E /* MapView.swift in Sources */,
+				18B6FAFE245B2A4F005AE556 /* Follow.swift in Sources */,
+				1848D1A2245B207D00592B76 /* Follows.swift in Sources */,
+				18B6FB02245C4D59005AE556 /* ComicInfo.swift in Sources */,
+				18D6BB4424567930003EBA1E /* Coordinator.swift in Sources */,
+				18D6BB30245677FA003EBA1E /* Struct.swift in Sources */,
+				18D6BB4E2456C59C003EBA1E /* Post.swift in Sources */,
+				18B6FB00245B390E005AE556 /* Followers.swift in Sources */,
+				1848D1A02459E02800592B76 /* UserInfo.swift in Sources */,
 				18D6BB1B24567758003EBA1E /* AppDelegate.swift in Sources */,
 				18D6BB1D24567758003EBA1E /* SceneDelegate.swift in Sources */,
+				18D6BB3D245678CA003EBA1E /* UsersList.swift in Sources */,
+				18D6BB3224567825003EBA1E /* APIRequest.swift in Sources */,
+				1824CA392467098800267D5F /* Utility.swift in Sources */,
+				18D6BB5024586B63003EBA1E /* SpecifiedUser.swift in Sources */,
 				18D6BB1F24567758003EBA1E /* ContentView.swift in Sources */,
+				18D6BB3B245678AE003EBA1E /* Login.swift in Sources */,
+				18D6BB4724567953003EBA1E /* LocationManager.swift in Sources */,
+				18D6BB3F245678EC003EBA1E /* ComicsList.swift in Sources */,
+				18D6BB3924567892003EBA1E /* Register.swift in Sources */,
+				18D6BB3424567848003EBA1E /* KeyChain.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -342,6 +466,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		18D6BB48245679C7003EBA1E /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		18D6BB49245679C7003EBA1E /* KeychainAccess */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 18D6BB48245679C7003EBA1E /* XCRemoteSwiftPackageReference "KeychainAccess" */;
+			productName = KeychainAccess;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 18D6BB0F24567758003EBA1E /* Project object */;
 }
