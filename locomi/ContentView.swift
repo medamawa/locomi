@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct ContentView: View {
     
@@ -22,6 +23,8 @@ struct ContentView: View {
     @State private var showingComicsList = false
     @State private var showingMapView = false
     @State private var showingPost = false
+    @State private var selectedComic: MKAnnotation?
+    @State private var showingComicDetail = false
     
     var body: some View {
         
@@ -78,8 +81,17 @@ struct ContentView: View {
             Button(action: { self.showingMapView.toggle() }) {
                 Text("mapView")
             }.sheet(isPresented: $showingMapView) {
-                MapView(comics: self.comics)
-                    .edgesIgnoringSafeArea(.all)
+                
+                VStack {
+                    
+                    MapView(selectedComic: self.$selectedComic, showingComicDetail: self.$showingComicDetail, comics: self.comics)
+                        .edgesIgnoringSafeArea(.all)
+                    
+                }
+                .alert(isPresented: self.$showingComicDetail) {
+                    Alert(title: Text(String((self.selectedComic?.title ?? "Unknown") ?? "")), message: Text(String((self.selectedComic?.subtitle ?? "###") ?? "")), primaryButton: .default(Text("OK")), secondaryButton: .default(Text("OK")))
+                }
+                
             }
             .onAppear {
                 APIRequest().getComics { (comics) in

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1824CA392467098800267D5F /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1824CA382467098800267D5F /* Utility.swift */; };
+		1824CA3F2467CCE100267D5F /* CommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1824CA3E2467CCE100267D5F /* CommentView.swift */; };
+		1824CA482469A67700267D5F /* ComicDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1824CA472469A67700267D5F /* ComicDetail.swift */; };
 		1848D1A02459E02800592B76 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1848D19F2459E02800592B76 /* UserInfo.swift */; };
 		1848D1A2245B207D00592B76 /* Follows.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1848D1A1245B207D00592B76 /* Follows.swift */; };
 		18B6FAFE245B2A4F005AE556 /* Follow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B6FAFD245B2A4F005AE556 /* Follow.swift */; };
@@ -37,6 +39,8 @@
 
 /* Begin PBXFileReference section */
 		1824CA382467098800267D5F /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
+		1824CA3E2467CCE100267D5F /* CommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentView.swift; sourceTree = "<group>"; };
+		1824CA472469A67700267D5F /* ComicDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicDetail.swift; sourceTree = "<group>"; };
 		1848D19F2459E02800592B76 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		1848D1A1245B207D00592B76 /* Follows.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Follows.swift; sourceTree = "<group>"; };
 		18B6FAFD245B2A4F005AE556 /* Follow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Follow.swift; sourceTree = "<group>"; };
@@ -113,8 +117,8 @@
 				18D6BB1A24567758003EBA1E /* AppDelegate.swift */,
 				18D6BB1C24567758003EBA1E /* SceneDelegate.swift */,
 				18D6BB202456775D003EBA1E /* Assets.xcassets */,
-				18D6BB252456775D003EBA1E /* LaunchScreen.storyboard */,
 				18D6BB282456775D003EBA1E /* Info.plist */,
+				18D6BB252456775D003EBA1E /* LaunchScreen.storyboard */,
 				18D6BB222456775D003EBA1E /* Preview Content */,
 			);
 			path = locomi;
@@ -152,8 +156,10 @@
 				18D6BB4F24586B63003EBA1E /* SpecifiedUser.swift */,
 				18D6BB3E245678EC003EBA1E /* ComicsList.swift */,
 				18B6FB01245C4D59005AE556 /* ComicInfo.swift */,
+				1824CA472469A67700267D5F /* ComicDetail.swift */,
 				18D6BB4024567904003EBA1E /* MapView.swift */,
 				18D6BB4D2456C59C003EBA1E /* Post.swift */,
+				1824CA3E2467CCE100267D5F /* CommentView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -255,11 +261,13 @@
 				18D6BB4124567904003EBA1E /* MapView.swift in Sources */,
 				18B6FAFE245B2A4F005AE556 /* Follow.swift in Sources */,
 				1848D1A2245B207D00592B76 /* Follows.swift in Sources */,
+				1824CA3F2467CCE100267D5F /* CommentView.swift in Sources */,
 				18B6FB02245C4D59005AE556 /* ComicInfo.swift in Sources */,
 				18D6BB4424567930003EBA1E /* Coordinator.swift in Sources */,
 				18D6BB30245677FA003EBA1E /* Struct.swift in Sources */,
 				18D6BB4E2456C59C003EBA1E /* Post.swift in Sources */,
 				18B6FB00245B390E005AE556 /* Followers.swift in Sources */,
+				1824CA482469A67700267D5F /* ComicDetail.swift in Sources */,
 				1848D1A02459E02800592B76 /* UserInfo.swift in Sources */,
 				18D6BB1B24567758003EBA1E /* AppDelegate.swift in Sources */,
 				18D6BB1D24567758003EBA1E /* SceneDelegate.swift in Sources */,

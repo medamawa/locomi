@@ -226,6 +226,24 @@ struct Favorite: Codable, Identifiable {
 }
 
 
+// postComment
+struct CommentData: Codable {
+    
+    var comic_id: String
+    var text: String
+    
+}
+
+struct CommentResponse: Codable {
+        
+    var status: String
+    var messages: ValidateMessages?
+    var auth_message: String?
+    var message: String?
+    
+}
+
+
 // postFavorite
 struct FavoriteData: Codable {
     
@@ -236,6 +254,7 @@ struct FavoriteData: Codable {
 struct FavoriteResponse: Codable {
     
     var status: String
+    var messages: ValidateMessages?
     var auth_message: String?
     var message: String?
     

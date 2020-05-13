@@ -61,6 +61,7 @@ struct Post: View {
         }
         
     }
+    
 }
 
 struct Post_Previews: PreviewProvider {

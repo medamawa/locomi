@@ -17,7 +17,7 @@ struct ComicInfo: View {
     @State var comicUserInfo: User?
     @State var commentUserInfo: [String: User] = [ : ]
     @State var favoriteUserInfo: [String: User] = [ : ]
-    @State var showingUserInfo = false
+    @State var showingCommentView = false
     
     var body: some View {
         
@@ -90,6 +90,12 @@ struct ComicInfo: View {
                 Text("コメント")
                     .font(.largeTitle)
                 
+                Button(action: { self.showingCommentView.toggle() }) {
+                    Text("コメントする")
+                }.sheet(isPresented: $showingCommentView) {
+                    CommentView(comic_id: self.comic?.id ?? "")
+                }
+                
                 List(comments ?? []) { comment in
 
                     Text("本文")
@@ -125,16 +131,13 @@ struct ComicInfo: View {
             Group {
                 Text("いいね")
                     .font(.largeTitle)
-                
 
                 Button(action: {
                     let favoriteData = FavoriteData(comic_id: self.comic?.id ?? "")
                     APIRequest().postFavorite(favoriteData)
                     }
                 ) {
-                    
                     Text("Favorite / Unfavoriteする")
-                    
                 }
                 
                 List(favorites ?? []) { favorite in

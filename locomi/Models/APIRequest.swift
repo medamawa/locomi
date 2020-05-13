@@ -270,6 +270,35 @@ struct  APIRequest {
         
     }
     
+    func postComment (_ dataToComment: CommentData) {
+        
+        do {
+            
+            guard let url = URL(string: "https://locomi.herokuapp.com/api/comment") else { return }
+            
+            let token = AccessToken().getToken()
+            
+            var urlRequest = URLRequest(url: url)
+            urlRequest.httpMethod = "POST"
+            urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            urlRequest.addValue("bearer \(token)", forHTTPHeaderField: "Authorization")
+            urlRequest.httpBody = try JSONEncoder().encode(dataToComment)
+            
+            URLSession.shared.dataTask(with: urlRequest) { (jsonData, _, error) in
+                
+                let data = try! JSONDecoder().decode(CommentResponse.self, from: jsonData!)
+
+                print(data)
+                print(type(of: data))
+                
+            }.resume()
+            
+        } catch {
+            return
+        }
+        
+    }
+    
     func postFavorite (_ dataToFavorite: FavoriteData) {
         
         do {

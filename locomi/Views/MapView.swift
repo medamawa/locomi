@@ -11,6 +11,8 @@ import MapKit
 
 struct MapView: UIViewRepresentable {
     
+    @Binding var selectedComic: MKAnnotation?
+    @Binding var showingComicDetail: Bool
     let comics: [Comic]
     
     func makeUIView(context: Context) -> MKMapView {
@@ -40,5 +42,5 @@ struct MapView: UIViewRepresentable {
         print("add annotations")
         
     }
-        
+    
 }

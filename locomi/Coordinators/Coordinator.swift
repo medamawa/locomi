@@ -7,16 +7,17 @@
 //
 
 import Foundation
+import UIKit
 import MapKit
 import SwiftUI
 
 final class Coordinator: NSObject, MKMapViewDelegate {
     
-    var control: MapView
+    var parent: MapView
     
-    init(_ control: MapView) {
+    init(_ parent: MapView) {
         
-        self.control = control
+        self.parent = parent
         
     }
     
@@ -63,8 +64,18 @@ final class Coordinator: NSObject, MKMapViewDelegate {
     
     // ボタンを押された時の処理
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-        
+
         print("### tapped")
+        print(view.annotation)
+        print(view.annotation?.title)
+        print(view.annotation?.subtitle)
+        print(view.annotation?.coordinate)
+        print(control)
+        print("###")
+        
+        guard let comic = view.annotation else { return }
+        parent.selectedComic = comic
+        parent.showingComicDetail = true
         
     }
     
