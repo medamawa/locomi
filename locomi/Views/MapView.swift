@@ -16,11 +16,11 @@ struct MapView: UIViewRepresentable {
     let comics: [Comic]
     
     func makeUIView(context: Context) -> MKMapView {
-        let map = MKMapView()
-        map.showsUserLocation = true
-        map.delegate = context.coordinator
+        let mapView = MKMapView()
+        mapView.showsUserLocation = true
+        mapView.delegate = context.coordinator
         
-        return map
+        return mapView
     }
     
     func makeCoordinator() -> Coordinator {

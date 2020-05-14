@@ -11,99 +11,62 @@ import MapKit
 
 struct ContentView: View {
     
-    @ObservedObject var locationManager = LocationManager()
-    @State private var comics: [Comic] = []
-    @State private var showingRegister = false
-    @State private var showingLogin = false
-    @State private var showingFollow = false
-    @State private var showingFollows = false
-    @State private var showingFollowers = false
-    @State private var showingUsersList = false
-    @State private var showingSpecifiedUser = false
-    @State private var showingComicsList = false
-    @State private var showingMapView = false
-    @State private var showingPost = false
-    @State private var selectedComic: MKAnnotation?
-    @State private var showingComicDetail = false
+    @State var index = 0
     
     var body: some View {
         
-        VStack {
+        TabView {
             
-            Button(action: { self.showingRegister.toggle() }) {
-                Text("register")
-            }.sheet(isPresented: $showingRegister) {
-                Register()
-            }
+            DebugView()
+                .tabItem({
+                    Image(systemName: Constants.TabBarImageName.tabBarD)
+                        .font(.title)
+                    Text("\(Constants.TabBarText.tabBarD)")
+                        .font(.title)
+                })
+                .tag(0)
+                .edgesIgnoringSafeArea(.top)
             
-            Button(action: { self.showingLogin.toggle() }) {
-                Text("login")
-            }.sheet(isPresented: $showingLogin) {
-                Login()
-            }
+            MapLine()
+                .tabItem({
+                    Image(systemName: Constants.TabBarImageName.tabBar0)
+                        .font(.title)
+                    Text("\(Constants.TabBarText.tabBar0)")
+                        .font(.title)
+                })
+                .tag(0)
+                .edgesIgnoringSafeArea(.top)
             
-            Button(action: { self.showingUsersList.toggle() }) {
-                Text("usersList")
-            }.sheet(isPresented: $showingUsersList) {
-                UsersList()
-            }
+            ARView()
+                .tabItem({
+                    Image(systemName: Constants.TabBarImageName.tabBar1)
+                        .font(.title)
+                    Text("\(Constants.TabBarText.tabBar1)")
+                        .font(.title)
+                })
+                .tag(0)
+                .edgesIgnoringSafeArea(.top)
             
-            Button(action: { self.showingFollow.toggle() }) {
-                Text("follow/unfollow")
-            }.sheet(isPresented: $showingFollow) {
-                Follow()
-            }
+            NotificationsView()
+                .tabItem({
+                    Image(systemName: Constants.TabBarImageName.tabBar2)
+                        .font(.title)
+                    Text("\(Constants.TabBarText.tabBar2)")
+                        .font(.title)
+                })
+                .tag(0)
+                .edgesIgnoringSafeArea(.top)
             
-            Button(action: { self.showingFollows.toggle() }) {
-                Text("follows")
-            }.sheet(isPresented: $showingFollows) {
-                Follows()
-            }
+            UserView()
+                .tabItem({
+                    Image(systemName: Constants.TabBarImageName.tabBar3)
+                        .font(.title)
+                    Text("\(Constants.TabBarText.tabBar3)")
+                        .font(.title)
+                })
+                .tag(0)
+                .edgesIgnoringSafeArea(.top)
             
-            Button(action: { self.showingFollowers.toggle() }) {
-                Text("followers")
-            }.sheet(isPresented: $showingFollowers) {
-                Followers()
-            }
-            
-            Button(action: { self.showingSpecifiedUser.toggle() }) {
-                Text("getSpecifiedUserInfo")
-            }.sheet(isPresented: $showingSpecifiedUser) {
-                SpecifiedUser()
-            }
-            
-            Button(action: { self.showingComicsList.toggle() }) {
-                Text("comicsList")
-            }.sheet(isPresented: $showingComicsList) {
-                ComicsList()
-            }
-            
-            Button(action: { self.showingMapView.toggle() }) {
-                Text("mapView")
-            }.sheet(isPresented: $showingMapView) {
-                
-                VStack {
-                    
-                    MapView(selectedComic: self.$selectedComic, showingComicDetail: self.$showingComicDetail, comics: self.comics)
-                        .edgesIgnoringSafeArea(.all)
-                    
-                }
-                .alert(isPresented: self.$showingComicDetail) {
-                    Alert(title: Text(String((self.selectedComic?.title ?? "Unknown") ?? "")), message: Text(String((self.selectedComic?.subtitle ?? "###") ?? "")), primaryButton: .default(Text("OK")), secondaryButton: .default(Text("OK")))
-                }
-                
-            }
-            .onAppear {
-                APIRequest().getComics { (comics) in
-                    self.comics = comics
-                }
-            }
-            
-            Button(action: { self.showingPost.toggle() }) {
-                Text("post")
-            }.sheet(isPresented: $showingPost) {
-                Post()
-            }
             
         }
         

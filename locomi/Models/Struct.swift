@@ -275,3 +275,9 @@ struct ValidateMessages: Codable {
     var release: [String]?
     
 }
+
+struct IdList: Identifiable {
+    
+    var id: String
+    
+}

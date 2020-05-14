@@ -44,9 +44,7 @@ final class Coordinator: NSObject, MKMapViewDelegate {
                 
         // ユーザーの位置情報の青い丸がピンに置き換わるのを防ぐ
         if annotation is MKUserLocation {
-
             return nil
-
         }
         
         let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier, for: annotation)
@@ -64,14 +62,6 @@ final class Coordinator: NSObject, MKMapViewDelegate {
     
     // ボタンを押された時の処理
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-
-        print("### tapped")
-        print(view.annotation)
-        print(view.annotation?.title)
-        print(view.annotation?.subtitle)
-        print(view.annotation?.coordinate)
-        print(control)
-        print("###")
         
         guard let comic = view.annotation else { return }
         parent.selectedComic = comic

@@ -9,49 +9,48 @@
 import SwiftUI
 
 struct UsersList: View {
-    @State var users: [User] = []
-    @State private var showingUserInfo = false
+    @State var title = ""
+    @State var idList: [IdList] = []
+    @State var usersInfo: [String: User] = [ : ]
     
     var body: some View {
         
-        List(users) { user in
+        VStack {
             
-            HStack {
+            Text(self.title)
+                .font(.title)
+            
+            List(idList) { userId in
                 
-                if user.profile_image == nil {
-                    Image(systemName: "person.crop.circle")
-                        .font(.system(size: 75))
-                }
-                
-                VStack(alignment: .leading) {
+                HStack {
                     
-                    Text(user.screen_name)
-                        .font(.largeTitle)
-                        .fontWeight(.bold)
-                    Text("@" + String(user.name))
-                        .font(.footnote)
-                        .lineLimit(0)
-                    Text(user.email)
-                        .font(.callout)
-                    Text(user.id)
-                        .font(.caption)
-                        .fontWeight(.light)
-                        .foregroundColor(Color.gray)
-                    Button(action: { self.showingUserInfo.toggle() }) {
-                        Text("Tap to show detail")
-                    }.sheet(isPresented: self.$showingUserInfo) {
-                        UserInfo(id: user.id)
+                    Image("user_icon")
+                        .resizable()
+                        .scaledToFit()
+                        .clipShape(Circle())
+                        .frame(width: 60, height: 60)
+                        .padding(8)
+                    
+                    VStack(alignment: .leading) {
+                        
+                        HStack {
+                            
+                            Text("\(self.usersInfo[userId.id]?.screen_name ?? "---")")
+                            Text("@\(self.usersInfo[userId.id]?.name ?? "---")")
+                            
+                        }
+                        
+                    }
+                    
+                }
+                .onAppear {
+                    
+                    APIRequest().getSpecifiedUser(userId.id) { User in
+                        self.usersInfo[userId.id] = User.first
                     }
                     
                 }
                 
-            }
-            
-        }
-        .onAppear {
-            
-            APIRequest().getUsers { (users) in
-                self.users = users
             }
             
         }

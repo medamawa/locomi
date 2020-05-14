@@ -16,19 +16,21 @@ struct ComicsList: View {
         
         List(comics) { comic in
             
-            VStack(alignment: .leading) {
-
-                Text(comic.text)
-                Text(comic.user_id)
-                Text(String(comic.lat))
-                Text(String(comic.lng))
-                Button(action: { self.showingComicDetail.toggle() }) {
-                    Text("Tap to show detail")
-                }.sheet(isPresented: self.$showingComicDetail) {
-                    ComicInfo(id: comic.id)
-                }
-                
-            }
+            ComicDetail(comic: comic)
+            
+//            VStack(alignment: .leading) {
+//
+//                Text(comic.text)
+//                Text(comic.user_id)
+//                Text(String(comic.lat))
+//                Text(String(comic.lng))
+//                Button(action: { self.showingComicDetail.toggle() }) {
+//                    Text("Tap to show detail")
+//                }.sheet(isPresented: self.$showingComicDetail) {
+//                    ComicInfo(id: comic.id)
+//                }
+//
+//            }
             
         }
         .onAppear {

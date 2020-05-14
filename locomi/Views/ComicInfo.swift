@@ -161,7 +161,9 @@ struct ComicInfo: View {
                             print(self.favoriteUserInfo[favorite.id])
                             print(self.favoriteUserInfo[favorite.id]?.screen_name)
                             print(self.favoriteUserInfo[favorite.id]?.id)
-                            print("###")                        }
+                            print("###")
+                            
+                        }
                         
                     }
                     
