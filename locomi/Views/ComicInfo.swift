@@ -1,168 +1,125 @@
 //
-//  ComicInfo.swift
+//  ComicDetail.swift
 //  locomi
 //
-//  Created by sogo on 2020/05/01.
+//  Created by sogo on 2020/05/12.
 //  Copyright © 2020 Sogo Nishihara. All rights reserved.
 //
 
 import SwiftUI
 
 struct ComicInfo: View {
-    @State var id = ""
-    @State var comic: Comic?
-    @State var comicUserID: String = ""
-    @State var comments: [Comment]?
-    @State var favorites: [Favorite]?
-    @State var comicUserInfo: User?
-    @State var commentUserInfo: [String: User] = [ : ]
-    @State var favoriteUserInfo: [String: User] = [ : ]
-    @State var showingCommentView = false
     
+    // comicまたはidのどちらかを選べる（comicの方が望ましい）
+    @State var id = ""
+    @State var screen_name = "---"
+    @State var name = "---"
+    @State var comic: Comic?
+    @State var favoriteIdList: [IdList] = []
+    @State private var showingModal = false
+    @State private var showingUserInfo = false
+    @State private var showingComicDetail = false
+    @State private var showingFavoriteUserList = false
+        
     var body: some View {
         
         VStack {
             
-            Group {
-                Text("投稿情報")
-                    .font(.largeTitle )
+            HStack {
                 
-                Group {
-                    Text("ユーザー")
-                        .font(.title)
+                Image("user_icon")
+                    .resizable()
+                    .scaledToFit()
+                    .clipShape(Circle())
+                    .frame(width: 60, height: 60)
+                    .padding(8)
+                    .onTapGesture {
+                        self.showingModal.toggle()
+                        self.showingUserInfo.toggle()
+                }
+                
+                VStack(alignment: .leading) {
+                    
+                    HStack {
+                        Text("\(self.screen_name)")
+                            .onTapGesture {
+                                self.showingModal.toggle()
+                                self.showingUserInfo.toggle()
+                        }
+                        Text("@\(self.name)")
+                            .foregroundColor(.gray)
+                            .onTapGesture {
+                                self.showingModal.toggle()
+                                self.showingUserInfo.toggle()
+                        }
+                    }
+                    
+                    Text("\(self.comic?.text ?? "")")
+                        .lineLimit(nil)
+                        .fixedSize(horizontal: false, vertical: true)
+                        .onTapGesture {
+                            self.showingModal.toggle()
+                            self.showingComicDetail.toggle()
+                    }
                     
                     HStack {
                         
-                        if self.comicUserInfo?.profile_image == nil {
-                            Image(systemName: "person.crop.circle")
-                                .font(.system(size: 75))
+                        Image(systemName: "heart")
+                            .onTapGesture {
+                                let favoriteData = FavoriteData(comic_id: self.comic?.id ?? "")
+                                APIRequest().postFavorite(favoriteData)
                         }
                         
-                        VStack(alignment: .leading) {
-                            
-                            Text(self.comicUserInfo?.screen_name ?? "screen_name ***")
-                                .font(.largeTitle)
-                                .fontWeight(.bold)
-                            Text("@" + String(self.comicUserInfo?.name ?? "name ***"))
-                                .font(.footnote)
-                                .lineLimit(0)
-                            Text(self.comicUserInfo?.email ?? "email ***")
-                                .font(.callout)
-                            Text(self.comicUserInfo?.id ?? "id ***")
-                                .font(.caption)
-                                .fontWeight(.light)
-                                .foregroundColor(Color.gray)
-                            
+                        Spacer()
+                        
+                        Image(systemName: "bubble.left")
+                            .onTapGesture {
+                                self.showingModal.toggle()
+                                self.showingComicDetail.toggle()
                         }
+                        
+                        Spacer()
+                        
+                        Image(systemName: "square.and.arrow.up")
                         
                     }
-                    
-                }
-                .onAppear {
-                    
-                    // self.comic.user_idに値が入ってから実行する
-                    Utility().wait( { return self.comic?.user_id == nil } ) {
-                        
-                        APIRequest().getSpecifiedUser(self.comic?.user_id ?? "") { User in
-                            self.comicUserInfo = User.first!
-                            print("### 投稿ユーザーデバッグ")
-                            print(self.comic?.user_id)
-                            print(self.comic?.text)
-                            print(self.comicUserInfo?.id)
-                            print("###")
-                        }
-                        
-                    }
-                    
-                }
-                
-                Group {
-                    Text("本文")
-                        .font(.title)
-                    
-                    Text(self.comic?.text ?? "")
+                    .foregroundColor(.gray)
+                    .padding(8)
                     
                 }
                 
             }
-            
-            Group {
-                Text("コメント")
-                    .font(.largeTitle)
+            .padding(8)
+            .onAppear {
                 
-                Button(action: { self.showingCommentView.toggle() }) {
-                    Text("コメントする")
-                }.sheet(isPresented: $showingCommentView) {
-                    CommentView(comic_id: self.comic?.id ?? "")
-                }
-                
-                List(comments ?? []) { comment in
-
-                    Text("本文")
-                        .font(.title)
-                    Text(comment.text)
+                Utility().wait( { return self.comic?.user_id == nil }) {
                     
-                    Text("ユーザー")
-                        .font(.title)
-                    VStack {
-                        
-                        Text(self.commentUserInfo[comment.id]?.screen_name ?? "screen_name ***")
-                        Text(self.commentUserInfo[comment.id]?.name ?? "name ***")
-                        Text(self.commentUserInfo[comment.id]?.email ?? "id ***")
-                        
-                    }
-                    .onAppear {
-                        
-                        APIRequest().getSpecifiedUser(comment.user_id) { User in
-                            self.commentUserInfo[comment.id] = User.first!
-                            print("### コメントユーザーデバッグ")
-                            print(self.commentUserInfo[comment.id]?.screen_name)
-                            print(self.commentUserInfo[comment.id]?.id)
-                            print("###")
-
-                        }
-                        
+                    APIRequest().getSpecifiedUser(self.comic!.user_id) { User in
+                        self.screen_name = User[0].screen_name
+                        self.name = User[0].name
                     }
                     
                 }
                 
             }
             
-            Group {
-                Text("いいね")
-                    .font(.largeTitle)
-
-                Button(action: {
-                    let favoriteData = FavoriteData(comic_id: self.comic?.id ?? "")
-                    APIRequest().postFavorite(favoriteData)
-                    }
-                ) {
-                    Text("Favorite / Unfavoriteする")
+            HStack {
+                
+                Text("いいねしたユーザー")
+                    .foregroundColor(.gray)
+                    .onTapGesture {
+                        self.showingModal.toggle()
+                        self.showingFavoriteUserList.toggle()
                 }
                 
-                List(favorites ?? []) { favorite in
-
-                    Text("いいねしたユーザー")
-                        .font(.title)
+            }
+            .onAppear {
+                
+                Utility().wait( { return self.comic?.id == nil }) {
                     
-                    VStack {
-                        
-                        Text(self.favoriteUserInfo[favorite.id]?.screen_name ?? "screen_name ***")
-                        Text(self.favoriteUserInfo[favorite.id]?.name ?? "name ***")
-                        Text(self.favoriteUserInfo[favorite.id]?.email ?? "id ***")
-
-                        
-                    }
-                    .onAppear {
-                        
-                        APIRequest().getSpecifiedUser(favorite.user_id) { User in
-                            self.favoriteUserInfo[favorite.id] = User.first!
-                            print("### いいねユーザーデバッグ")
-                            print(self.favoriteUserInfo[favorite.id])
-                            print(self.favoriteUserInfo[favorite.id]?.screen_name)
-                            print(self.favoriteUserInfo[favorite.id]?.id)
-                            print("###")
-                            
+                    APIRequest().getComicDetail(self.comic!.id) { Data in
+                        Data.favorites?.forEach {user in
+                            self.favoriteIdList.append(IdList(id: user.user_id))
                         }
                         
                     }
@@ -172,16 +129,25 @@ struct ComicInfo: View {
             }
             
         }
+        .sheet(isPresented: self.$showingModal) {
+            
+            if self.showingUserInfo {
+                UserInfo(id: self.comic?.user_id ?? "")
+            } else if self.showingComicDetail {
+                ComicDetail(id: self.comic!.id)
+            } else if self.showingFavoriteUserList {
+                UsersList(title: "いいねしたユーザー", idList: self.favoriteIdList)
+            }
+            
+        }
         .onAppear {
             
-            APIRequest().getComicDetail(self.id) { (Data) in
-                print("### comicinfo全体デバッグ")
-                print(Data)
-                self.comic = Data.comic.first!
-                self.comments = Data.comments
-                self.favorites = Data.favorites
-                print(self.favorites)
-                print("###")
+            if self.comic == nil {
+                
+                APIRequest().getComicDetail(self.id) { Data in
+                    self.comic = Data.comic.first!
+                }
+                
             }
             
         }
@@ -190,8 +156,9 @@ struct ComicInfo: View {
     
 }
 
+
 struct ComicInfo_Previews: PreviewProvider {
     static var previews: some View {
-        ComicInfo()
+        ComicsList()
     }
 }

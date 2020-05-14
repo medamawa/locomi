@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct ComicsList: View {
+    
     @State var comics: [Comic] = []
     @State var showingComicDetail = false
     
@@ -16,21 +17,7 @@ struct ComicsList: View {
         
         List(comics) { comic in
             
-            ComicDetail(comic: comic)
-            
-//            VStack(alignment: .leading) {
-//
-//                Text(comic.text)
-//                Text(comic.user_id)
-//                Text(String(comic.lat))
-//                Text(String(comic.lng))
-//                Button(action: { self.showingComicDetail.toggle() }) {
-//                    Text("Tap to show detail")
-//                }.sheet(isPresented: self.$showingComicDetail) {
-//                    ComicInfo(id: comic.id)
-//                }
-//
-//            }
+            ComicInfo(comic: comic)
             
         }
         .onAppear {
@@ -42,6 +29,7 @@ struct ComicsList: View {
         }
         
     }
+    
 }
 
 struct ComicsList_Previews: PreviewProvider {

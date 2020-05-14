@@ -12,6 +12,7 @@ struct UsersList: View {
     @State var title = ""
     @State var idList: [IdList] = []
     @State var usersInfo: [String: User] = [ : ]
+    @State private var showingUserInfo = false
     
     var body: some View {
         
@@ -20,7 +21,7 @@ struct UsersList: View {
             Text(self.title)
                 .font(.title)
             
-            List(idList) { userId in
+            List(idList) { user_id in
                 
                 HStack {
                     
@@ -35,18 +36,24 @@ struct UsersList: View {
                         
                         HStack {
                             
-                            Text("\(self.usersInfo[userId.id]?.screen_name ?? "---")")
-                            Text("@\(self.usersInfo[userId.id]?.name ?? "---")")
+                            Text("\(self.usersInfo[user_id.id]?.screen_name ?? "---")")
+                            Text("@\(self.usersInfo[user_id.id]?.name ?? "---")")
                             
                         }
                         
                     }
                     
                 }
+                .onTapGesture {
+                    self.showingUserInfo.toggle()
+                }
+                .sheet(isPresented: self.$showingUserInfo) {
+                    UserInfo(id: user_id.id)
+                }
                 .onAppear {
                     
-                    APIRequest().getSpecifiedUser(userId.id) { User in
-                        self.usersInfo[userId.id] = User.first
+                    APIRequest().getSpecifiedUser(user_id.id) { User in
+                        self.usersInfo[user_id.id] = User.first
                     }
                     
                 }

@@ -30,17 +30,17 @@ struct MapLine: View {
                     
                     Spacer()
                     
-                    if showingComicDetail {
-                        
-                        if self.selectedComic != nil {
-                            
-                            RoundedRectangle(cornerRadius: 20, style: .continuous)
-                                .fill(Color.gray)
-                                .frame(width: 200, height: 100)
-                            
-                        }
-                        
-                    }
+//                    if showingComicDetail {
+//
+//                        if self.selectedComic != nil {
+//
+//                            RoundedRectangle(cornerRadius: 20, style: .continuous)
+//                                .fill(Color.gray)
+//                                .frame(width: 200, height: 100)
+//
+//                        }
+//
+//                    }
                     
                     Spacer()
                     
@@ -53,7 +53,7 @@ struct MapLine: View {
             
             if self.selectedComic != nil {
                 
-                ComicInfo(id: (self.selectedComic?.subtitle)!!)
+                ComicDetail(id: (self.selectedComic?.subtitle)!!)
                 
             }
             
