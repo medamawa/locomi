@@ -18,6 +18,7 @@
 		1824CA8C246D551500267D5F /* NotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1824CA8B246D551500267D5F /* NotificationsView.swift */; };
 		1824CA8E246D552D00267D5F /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1824CA8D246D552D00267D5F /* UserView.swift */; };
 		1824CA90246D656300267D5F /* CommentInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1824CA8F246D656300267D5F /* CommentInfo.swift */; };
+		1824CA99246E200900267D5F /* SpecifiedUserComicsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1824CA98246E200900267D5F /* SpecifiedUserComicsList.swift */; };
 		1848D1A02459E02800592B76 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1848D19F2459E02800592B76 /* UserInfo.swift */; };
 		1848D1A2245B207D00592B76 /* Follows.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1848D1A1245B207D00592B76 /* Follows.swift */; };
 		18B6FAFE245B2A4F005AE556 /* Follow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B6FAFD245B2A4F005AE556 /* Follow.swift */; };
@@ -57,6 +58,7 @@
 		1824CA8B246D551500267D5F /* NotificationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsView.swift; sourceTree = "<group>"; };
 		1824CA8D246D552D00267D5F /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
 		1824CA8F246D656300267D5F /* CommentInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentInfo.swift; sourceTree = "<group>"; };
+		1824CA98246E200900267D5F /* SpecifiedUserComicsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecifiedUserComicsList.swift; sourceTree = "<group>"; };
 		1848D19F2459E02800592B76 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		1848D1A1245B207D00592B76 /* Follows.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Follows.swift; sourceTree = "<group>"; };
 		18B6FAFD245B2A4F005AE556 /* Follow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Follow.swift; sourceTree = "<group>"; };
@@ -104,6 +106,67 @@
 				1824CA85246D543A00267D5F /* Constants.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		1824CA91246D912400267D5F /* Comic */ = {
+			isa = PBXGroup;
+			children = (
+				18D6BB3E245678EC003EBA1E /* ComicsList.swift */,
+				1824CA98246E200900267D5F /* SpecifiedUserComicsList.swift */,
+				1824CA472469A67700267D5F /* ComicInfo.swift */,
+				18B6FB01245C4D59005AE556 /* ComicDetail.swift */,
+				1824CA8F246D656300267D5F /* CommentInfo.swift */,
+				18D6BB4D2456C59C003EBA1E /* Post.swift */,
+				1824CA3E2467CCE100267D5F /* CommentView.swift */,
+			);
+			path = Comic;
+			sourceTree = "<group>";
+		};
+		1824CA92246D916600267D5F /* User */ = {
+			isa = PBXGroup;
+			children = (
+				18D6BB3C245678CA003EBA1E /* UsersList.swift */,
+				1824CA82246D43F800267D5F /* Users.swift */,
+				1848D19F2459E02800592B76 /* UserInfo.swift */,
+				18D6BB4F24586B63003EBA1E /* SpecifiedUser.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		1824CA93246D918100267D5F /* Follow */ = {
+			isa = PBXGroup;
+			children = (
+				18B6FAFD245B2A4F005AE556 /* Follow.swift */,
+				1848D1A1245B207D00592B76 /* Follows.swift */,
+				18B6FAFF245B390E005AE556 /* Followers.swift */,
+			);
+			path = Follow;
+			sourceTree = "<group>";
+		};
+		1824CA94246D919B00267D5F /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				18D6BB3824567892003EBA1E /* Register.swift */,
+				18D6BB3A245678AE003EBA1E /* Login.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		1824CA95246D91AD00267D5F /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				1824CA80246D162E00267D5F /* MapLine.swift */,
+				18D6BB4024567904003EBA1E /* MapView.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		1824CA96246D91E200267D5F /* AR */ = {
+			isa = PBXGroup;
+			children = (
+				1824CA89246D54F100267D5F /* ARView.swift */,
+			);
+			path = AR;
 			sourceTree = "<group>";
 		};
 		18D6BB0E24567758003EBA1E = {
@@ -163,25 +226,13 @@
 		18D6BB3724567884003EBA1E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				1824CA94246D919B00267D5F /* Auth */,
+				1824CA93246D918100267D5F /* Follow */,
+				1824CA92246D916600267D5F /* User */,
+				1824CA91246D912400267D5F /* Comic */,
+				1824CA95246D91AD00267D5F /* Map */,
+				1824CA96246D91E200267D5F /* AR */,
 				1824CA87246D546E00267D5F /* DebugView.swift */,
-				18D6BB3824567892003EBA1E /* Register.swift */,
-				18D6BB3A245678AE003EBA1E /* Login.swift */,
-				18B6FAFD245B2A4F005AE556 /* Follow.swift */,
-				1848D1A1245B207D00592B76 /* Follows.swift */,
-				18B6FAFF245B390E005AE556 /* Followers.swift */,
-				18D6BB3C245678CA003EBA1E /* UsersList.swift */,
-				1824CA82246D43F800267D5F /* Users.swift */,
-				1848D19F2459E02800592B76 /* UserInfo.swift */,
-				18D6BB4F24586B63003EBA1E /* SpecifiedUser.swift */,
-				18D6BB3E245678EC003EBA1E /* ComicsList.swift */,
-				1824CA472469A67700267D5F /* ComicInfo.swift */,
-				18B6FB01245C4D59005AE556 /* ComicDetail.swift */,
-				1824CA8F246D656300267D5F /* CommentInfo.swift */,
-				1824CA80246D162E00267D5F /* MapLine.swift */,
-				18D6BB4024567904003EBA1E /* MapView.swift */,
-				18D6BB4D2456C59C003EBA1E /* Post.swift */,
-				1824CA3E2467CCE100267D5F /* CommentView.swift */,
-				1824CA89246D54F100267D5F /* ARView.swift */,
 				1824CA8B246D551500267D5F /* NotificationsView.swift */,
 				1824CA8D246D552D00267D5F /* UserView.swift */,
 			);
@@ -307,6 +358,7 @@
 				18D6BB3B245678AE003EBA1E /* Login.swift in Sources */,
 				18D6BB4724567953003EBA1E /* LocationManager.swift in Sources */,
 				1824CA83246D43F800267D5F /* Users.swift in Sources */,
+				1824CA99246E200900267D5F /* SpecifiedUserComicsList.swift in Sources */,
 				18D6BB3F245678EC003EBA1E /* ComicsList.swift in Sources */,
 				1824CA88246D546E00267D5F /* DebugView.swift in Sources */,
 				18D6BB3924567892003EBA1E /* Register.swift in Sources */,

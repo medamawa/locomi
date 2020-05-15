@@ -9,9 +9,17 @@
 import SwiftUI
 
 struct UserView: View {
+        
     var body: some View {
-        Text("UserView")
+        
+        VStack {
+            
+            UserInfo(id: UserID().getID())
+            
+        }
+        
     }
+    
 }
 
 struct UserView_Previews: PreviewProvider {

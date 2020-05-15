@@ -21,7 +21,7 @@ struct Constants {
     struct TabBarText {
         static let tabBarD = "Debug"
         static let tabBar0 = "Map"
-        static let tabBar1 = "AR"   // locomi Lens にするかも
+        static let tabBar1 = "locomi Lens"
         static let tabBar2 = "Notifications"
         static let tabBar3 = "User"
     }

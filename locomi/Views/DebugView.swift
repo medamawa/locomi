@@ -12,13 +12,11 @@ struct DebugView: View {
     
     @State private var showingRegister = false
     @State private var showingLogin = false
-    @State private var showingFollow = false
     @State private var showingFollows = false
     @State private var showingFollowers = false
     @State private var showingUsers = false
     @State private var showingSpecifiedUser = false
     @State private var showingComicsList = false
-    @State private var showingMapView = false
     @State private var showingPost = false
     
     var body: some View {
@@ -43,12 +41,6 @@ struct DebugView: View {
                 Users()
             }
             
-            Button(action: { self.showingFollow.toggle() }) {
-                Text("follow/unfollow")
-            }.sheet(isPresented: $showingFollow) {
-                Follow()
-            }
-            
             Button(action: { self.showingFollows.toggle() }) {
                 Text("follows")
             }.sheet(isPresented: $showingFollows) {
@@ -71,12 +63,6 @@ struct DebugView: View {
                 Text("comicsList")
             }.sheet(isPresented: $showingComicsList) {
                 ComicsList()
-            }
-            
-            Button(action: { self.showingMapView.toggle() }) {
-                Text("mapView")
-            }.sheet(isPresented: $showingMapView) {
-                MapLine()
             }
             
             Button(action: { self.showingPost.toggle() }) {

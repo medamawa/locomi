@@ -233,11 +233,11 @@ struct  APIRequest {
     
     func getComics(completion: @escaping ([Comic]) -> ()) {
         
-        guard let url = URL(string: "https://locomi.herokuapp.com/api/comics") else { return }
+        guard let url = URL(string: "https://locomi.herokuapp.com/api/comics/all") else { return }
         
-        URLSession.shared.dataTask(with: url) { (data, _, _) in
+        URLSession.shared.dataTask(with: url) { (jsonData, _, _) in
             
-            let comics = try! JSONDecoder().decode([Comic].self, from: data!)
+            let comics = try! JSONDecoder().decode([Comic].self, from: jsonData!)
             
             print(comics)
             
@@ -251,7 +251,7 @@ struct  APIRequest {
     
     func getComicDetail (_ id: String, completion: @escaping (ComicDetailResponseData) -> ()) {
         
-        guard let url = URL(string: "https://locomi.herokuapp.com/api/comics/\(id)") else { return }
+        guard let url = URL(string: "https://locomi.herokuapp.com/api/comics/all/\(id)") else { return }
         
         URLSession.shared.dataTask(with: url) { (jsonData, _, _) in
             
@@ -264,6 +264,24 @@ struct  APIRequest {
             
             DispatchQueue.main.async {
                 completion(comic_data!)
+            }
+            
+        }.resume()
+        
+    }
+    
+    func getSpecifiedUserComics(_ user_id: String, completion: @escaping ([Comic]) -> ()) {
+        
+        guard let url = URL(string: "https://locomi.herokuapp.com/api/comics/user/\(user_id)") else { return }
+        
+        URLSession.shared.dataTask(with: url) { (jsonData, _, _) in
+            
+            let comics = try! JSONDecoder().decode([Comic].self, from: jsonData!)
+            
+            print(comics)
+            
+            DispatchQueue.main.async {
+                completion(comics)
             }
             
         }.resume()

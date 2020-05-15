@@ -17,6 +17,7 @@ struct ComicInfo: View {
     @State var comic: Comic?
     @State var favoriteIdList: [IdList] = []
     @State private var showingModal = false
+    @State private var selectedModal: Int?
     @State private var showingUserInfo = false
     @State private var showingComicDetail = false
     @State private var showingFavoriteUserList = false
@@ -35,7 +36,7 @@ struct ComicInfo: View {
                     .padding(8)
                     .onTapGesture {
                         self.showingModal.toggle()
-                        self.showingUserInfo.toggle()
+                        self.selectedModal = 1
                 }
                 
                 VStack(alignment: .leading) {
@@ -44,13 +45,13 @@ struct ComicInfo: View {
                         Text("\(self.screen_name)")
                             .onTapGesture {
                                 self.showingModal.toggle()
-                                self.showingUserInfo.toggle()
+                                self.selectedModal = 1
                         }
                         Text("@\(self.name)")
                             .foregroundColor(.gray)
                             .onTapGesture {
                                 self.showingModal.toggle()
-                                self.showingUserInfo.toggle()
+                                self.selectedModal = 1
                         }
                     }
                     
@@ -59,7 +60,7 @@ struct ComicInfo: View {
                         .fixedSize(horizontal: false, vertical: true)
                         .onTapGesture {
                             self.showingModal.toggle()
-                            self.showingComicDetail.toggle()
+                            self.selectedModal = 2
                     }
                     
                     HStack {
@@ -75,7 +76,7 @@ struct ComicInfo: View {
                         Image(systemName: "bubble.left")
                             .onTapGesture {
                                 self.showingModal.toggle()
-                                self.showingComicDetail.toggle()
+                                self.selectedModal = 4
                         }
                         
                         Spacer()
@@ -109,7 +110,7 @@ struct ComicInfo: View {
                     .foregroundColor(.gray)
                     .onTapGesture {
                         self.showingModal.toggle()
-                        self.showingFavoriteUserList.toggle()
+                        self.selectedModal = 3
                 }
                 
             }
@@ -131,12 +132,14 @@ struct ComicInfo: View {
         }
         .sheet(isPresented: self.$showingModal) {
             
-            if self.showingUserInfo {
+            if self.selectedModal == 1 {
                 UserInfo(id: self.comic?.user_id ?? "")
-            } else if self.showingComicDetail {
+            } else if self.selectedModal == 2 {
                 ComicDetail(id: self.comic!.id)
-            } else if self.showingFavoriteUserList {
+            } else if self.selectedModal == 3 {
                 UsersList(title: "いいねしたユーザー", idList: self.favoriteIdList)
+            } else if self.selectedModal == 4 {
+                CommentView(comic_id: self.comic?.id ?? "")
             }
             
         }

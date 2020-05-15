@@ -9,7 +9,9 @@
 import SwiftUI
 
 struct UsersList: View {
+    
     @State var title = ""
+    @State var id = ""
     @State var idList: [IdList] = []
     @State var usersInfo: [String: User] = [ : ]
     @State private var showingUserInfo = false
@@ -46,15 +48,21 @@ struct UsersList: View {
                 }
                 .onTapGesture {
                     self.showingUserInfo.toggle()
+                    self.id = user_id.id
                 }
                 .sheet(isPresented: self.$showingUserInfo) {
-                    UserInfo(id: user_id.id)
+                    UserInfo(id: self.id)
                 }
                 .onAppear {
                     
                     APIRequest().getSpecifiedUser(user_id.id) { User in
                         self.usersInfo[user_id.id] = User.first
                     }
+                    print("###############")
+                    print(self.idList)
+                    print(self.usersInfo)
+                    print(user_id.id)
+                    print("###############")
                     
                 }
                 
