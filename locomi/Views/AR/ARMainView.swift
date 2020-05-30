@@ -8,14 +8,19 @@
 
 import SwiftUI
 
-struct ARView: View {
+struct ARMainView: View {
+    
     var body: some View {
-        Text("ARView")
+        
+        return ARViewContainer()
+            .edgesIgnoringSafeArea(.all)
+        
     }
+    
 }
 
-struct ARView_Previews: PreviewProvider {
+struct ARMainView_Previews: PreviewProvider {
     static var previews: some View {
-        ARView()
+        ARMainView()
     }
 }
