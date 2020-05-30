@@ -49,13 +49,10 @@ struct  APIRequest {
             
             URLSession.shared.dataTask(with: urlRequest) { (jsonData, _, _) in
                 
-                let data = try! JSONDecoder().decode(LoginResponse.self, from: (jsonData)!)
-                
-                print(data)
-                print(data.data?.access_token ?? "")
-                print(data.data?.id ?? "")
+                let data = try! JSONDecoder().decode(AuthResponse.self, from: (jsonData)!)
                 
                 AccessToken().saveToken(token: data.data?.access_token ?? "")
+                RefreshToken().saveToken(token: data.data?.refresh_token ?? "")
                 UserID().saveID(id: data.data?.id ?? "")
                 
             }.resume()
@@ -67,6 +64,44 @@ struct  APIRequest {
         }
         
     }
+    
+    func getAuth () -> Bool {
+        
+        var isOK: Bool = false
+        
+        guard let url = URL(string: "https://locomi.herokuapp.com/api/refresh-token") else { return false }
+        
+        let token = RefreshToken().getToken()
+        
+        var urlRequest = URLRequest(url: url)
+        urlRequest.httpMethod = "GET"
+        urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        urlRequest.addValue("bearer \(token)", forHTTPHeaderField: "Authorization")
+        
+        URLSession.shared.dataTask(with: urlRequest) { (jsonData, _, _) in
+            
+            let data = try! JSONDecoder().decode(AuthResponse.self, from: (jsonData)!)
+            
+            print("######@@@@@@@####")
+            print(data)
+            print(data.data?.access_token)
+            print(data.data?.refresh_token)
+            print(data.data?.id)
+            print("######@@@@@@@####")
+            
+            if data.status == "success" {
+                AccessToken().saveToken(token: data.data?.access_token ?? "")
+                RefreshToken().saveToken(token: data.data?.refresh_token ?? "")
+                UserID().saveID(id: data.data?.id ?? "")
+                isOK = true
+            }
+            
+        }.resume()
+        
+        return isOK
+        
+    }
+    
     
     func postFollow (_ id: String) {
         

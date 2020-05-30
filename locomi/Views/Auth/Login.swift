@@ -22,6 +22,10 @@ struct Login: View {
             
             Form {
                 
+                if !APIRequest().getAuth() {
+                    Text("ログイン済みです")
+                }
+                
                 Section(header: Text("メールアドレス入力")) {
                     
                     TextField("メールアドレスを入力してください", text: $email)
@@ -47,7 +51,8 @@ struct Login: View {
                     
                 }
                 
-            }.navigationBarTitle("ログイン")
+            }
+            .navigationBarTitle("ログイン")
             
         }
         

@@ -7,9 +7,11 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct Post: View {
     
+    @ObservedObject private var locationManager = LocationManager()
     @State var showText = false
     @State var latString = ""
     @State var lngString = ""
@@ -20,14 +22,16 @@ struct Post: View {
     
     var body: some View {
         
-        NavigationView {
+        let coordinate = self.locationManager.location != nil ? self.locationManager.location!.coordinate: CLLocationCoordinate2D()
+        
+        return NavigationView {
             
             Form {
                 
                 Section(header: Text("位置情報入力")) {
                     
-                    TextField("緯度（lattitude）を入力してください", text: $latString)
-                    TextField("経度（longitude）を入力してください", text: $lngString)
+                    Text("緯度：\(coordinate.latitude)")
+                    Text("経度：\(coordinate.longitude)")
                     
                 }
                 
@@ -46,7 +50,7 @@ struct Post: View {
                 Section {
                     
                     Button(action: {
-                        let postData = PostData(lat: self.latString, lng: self.lngString, text: self.text, release: self.release)
+                        let postData = PostData(lat: String(coordinate.latitude), lng: String(coordinate.longitude), text: self.text, release: self.release)
                         APIRequest().post(postData)
                     }) {
                         

@@ -14,17 +14,21 @@ struct MapView: UIViewRepresentable {
     @Binding var selectedComic: MKAnnotation?
     @Binding var showingComicDetail: Bool
     let comics: [Comic]
+    let mapView = MKMapView()
     
     func makeUIView(context: Context) -> MKMapView {
-        let mapView = MKMapView()
+        
         mapView.showsUserLocation = true
         mapView.delegate = context.coordinator
-        
+
         return mapView
+        
     }
     
     func makeCoordinator() -> Coordinator {
+        
         Coordinator(self)
+        
     }
     
     func updateUIView(_ uiView: MKMapView, context: UIViewRepresentableContext<MapView>) {

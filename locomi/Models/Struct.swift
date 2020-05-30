@@ -83,21 +83,20 @@ struct LoginData: Encodable {
     
 }
 
-struct LoginResponse: Codable {
+struct AuthResponse: Codable {
     
     var status: String
     var messages: ValidateMessages?
     var auth_message: String?
-    var data: LoginResponseData?
+    var data: AuthResponseData?
     
 }
 
-struct LoginResponseData: Codable {
+struct AuthResponseData: Codable {
     
     var id: String
     var access_token: String
-    var token_type: String
-    var expires_in: Int
+    var refresh_token: String
     
 }
 

@@ -27,6 +27,38 @@ class AccessToken {
         
     }
     
+    func removeToken() {
+        
+        keychain["AccessToken"] = ""
+        
+    }
+    
+}
+
+class RefreshToken {
+    
+    let keychain = Keychain()
+    
+    func saveToken(token: String) {
+        
+        keychain["RefreshToken"] = token
+        
+    }
+    
+    func getToken() -> String {
+        
+        guard let token = keychain["RefreshToken"] else { return "" }
+        
+        return token
+        
+    }
+    
+    func removeToken() {
+        
+        keychain["RefreshToken"] = ""
+        
+    }
+    
 }
 
 class UserID {
@@ -44,6 +76,12 @@ class UserID {
         guard let id = keychain["ID"] else { return "" }
         
         return id
+        
+    }
+    
+    func removeID() {
+        
+        keychain["ID"] = ""
         
     }
     

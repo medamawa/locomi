@@ -14,13 +14,23 @@ struct MapLine: View {
     @State private var comics: [Comic] = []
     @State private var selectedComic: MKAnnotation?
     @State private var showingComicDetail = false
+    @State private var showingPost = false
     
     var body: some View {
         
         ZStack {
             
             MapView(selectedComic: $selectedComic, showingComicDetail: $showingComicDetail, comics: comics)
-            .edgesIgnoringSafeArea(.all)
+                .edgesIgnoringSafeArea(.all)
+                .sheet(isPresented: $showingComicDetail) {
+
+                    if self.selectedComic != nil {
+
+                        ComicDetail(id: (self.selectedComic?.subtitle)!!)
+
+                    }
+
+                }
             
             VStack {
                 
@@ -29,39 +39,35 @@ struct MapLine: View {
                 HStack {
                     
                     Spacer()
-                    
-//                    if showingComicDetail {
-//
-//                        if self.selectedComic != nil {
-//
-//                            RoundedRectangle(cornerRadius: 20, style: .continuous)
-//                                .fill(Color.gray)
-//                                .frame(width: 200, height: 100)
-//
-//                        }
-//
-//                    }
-                    
-                    Spacer()
+
+                    Button(action: {
+                        self.showingPost.toggle()
+                    }) {
+                        Image(systemName: "plus")
+                    }
+                    .padding()
+                    .background(Color.black.opacity(0.75))
+                    .foregroundColor(.white)
+                    .font(.title)
+                    .clipShape(Circle())
+                    .padding(.trailing)
+                    .sheet(isPresented: $showingPost) {
+
+                        Post()
+
+                    }
                     
                 }
                 
             }
             
         }
-        .sheet(isPresented: $showingComicDetail) {
-            
-            if self.selectedComic != nil {
-                
-                ComicDetail(id: (self.selectedComic?.subtitle)!!)
-                
-            }
-            
-        }
         .onAppear {
-            APIRequest().getComics { (comics) in
+            
+            APIRequest().getComics { comics in
                 self.comics = comics
             }
+            
         }
         
     }

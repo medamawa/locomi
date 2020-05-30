@@ -14,13 +14,11 @@ struct ComicInfo: View {
     @State var id = ""
     @State var screen_name = "---"
     @State var name = "---"
+    @State var profile_image: String?
     @State var comic: Comic?
     @State var favoriteIdList: [IdList] = []
     @State private var showingModal = false
     @State private var selectedModal: Int?
-    @State private var showingUserInfo = false
-    @State private var showingComicDetail = false
-    @State private var showingFavoriteUserList = false
         
     var body: some View {
         
@@ -28,15 +26,19 @@ struct ComicInfo: View {
             
             HStack {
                 
-                Image("user_icon")
-                    .resizable()
-                    .scaledToFit()
-                    .clipShape(Circle())
-                    .frame(width: 60, height: 60)
-                    .padding(8)
-                    .onTapGesture {
-                        self.showingModal.toggle()
-                        self.selectedModal = 1
+                if profile_image == nil {
+                    
+                    Image("user_icon")
+                        .resizable()
+                        .scaledToFit()
+                        .clipShape(Circle())
+                        .frame(width: 60, height: 60)
+                        .padding(8)
+                        .onTapGesture {
+                            self.showingModal.toggle()
+                            self.selectedModal = 1
+                    }
+                    
                 }
                 
                 VStack(alignment: .leading) {
@@ -98,6 +100,7 @@ struct ComicInfo: View {
                     APIRequest().getSpecifiedUser(self.comic!.user_id) { User in
                         self.screen_name = User[0].screen_name
                         self.name = User[0].name
+                        self.profile_image = User[0].profile_image
                     }
                     
                 }

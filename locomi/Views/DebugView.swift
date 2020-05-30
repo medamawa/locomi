@@ -12,10 +12,10 @@ struct DebugView: View {
     
     @State private var showingRegister = false
     @State private var showingLogin = false
+    @State private var showingLogout = false
     @State private var showingFollows = false
     @State private var showingFollowers = false
     @State private var showingUsers = false
-    @State private var showingSpecifiedUser = false
     @State private var showingComicsList = false
     @State private var showingPost = false
     
@@ -35,6 +35,12 @@ struct DebugView: View {
                 Login()
             }
             
+            Button(action: { self.showingLogout.toggle() }) {
+                Text("logout")
+            }.sheet(isPresented: $showingLogout) {
+                Logout()
+            }
+            
             Button(action: { self.showingUsers.toggle() }) {
                 Text("users")
             }.sheet(isPresented: $showingUsers) {
@@ -51,12 +57,6 @@ struct DebugView: View {
                 Text("followers")
             }.sheet(isPresented: $showingFollowers) {
                 Followers()
-            }
-            
-            Button(action: { self.showingSpecifiedUser.toggle() }) {
-                Text("getSpecifiedUserInfo")
-            }.sheet(isPresented: $showingSpecifiedUser) {
-                SpecifiedUser()
             }
             
             Button(action: { self.showingComicsList.toggle() }) {

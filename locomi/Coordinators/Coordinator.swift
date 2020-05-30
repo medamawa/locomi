@@ -55,6 +55,7 @@ final class Coordinator: NSObject, MKMapViewDelegate {
         markerAnnotationView.rightCalloutAccessoryView = UIButton(type: UIButton.ButtonType.detailDisclosure)
         markerAnnotationView.clusteringIdentifier = annotation.clusteringIdentifier
         markerAnnotationView.markerTintColor = annotation.markerTintColor
+        markerAnnotationView.glyphImage = UIImage(systemName: "person.circle")
         
         return markerAnnotationView
         
