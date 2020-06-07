@@ -122,8 +122,8 @@
 				1824CA472469A67700267D5F /* ComicInfo.swift */,
 				18B6FB01245C4D59005AE556 /* ComicDetail.swift */,
 				1824CA8F246D656300267D5F /* CommentInfo.swift */,
-				18D6BB4D2456C59C003EBA1E /* Post.swift */,
 				1824CA3E2467CCE100267D5F /* CommentView.swift */,
+				18D6BB4D2456C59C003EBA1E /* Post.swift */,
 			);
 			path = Comic;
 			sourceTree = "<group>";
@@ -135,6 +135,7 @@
 				1824CA82246D43F800267D5F /* Users.swift */,
 				1848D19F2459E02800592B76 /* UserInfo.swift */,
 				18D6BB4F24586B63003EBA1E /* SpecifiedUser.swift */,
+				1824CA8D246D552D00267D5F /* UserView.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -175,6 +176,14 @@
 				18D6247724828F6100176B1F /* ARViewContainer.swift */,
 			);
 			path = AR;
+			sourceTree = "<group>";
+		};
+		18D6247924829D1F00176B1F /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				1824CA8B246D551500267D5F /* NotificationsView.swift */,
+			);
+			path = Notification;
 			sourceTree = "<group>";
 		};
 		18D6BB0E24567758003EBA1E = {
@@ -240,10 +249,9 @@
 				1824CA91246D912400267D5F /* Comic */,
 				1824CA95246D91AD00267D5F /* Map */,
 				1824CA96246D91E200267D5F /* AR */,
+				18D6247924829D1F00176B1F /* Notification */,
 				18CDE221246F7C9A00239C84 /* MainView.swift */,
 				1824CA87246D546E00267D5F /* DebugView.swift */,
-				1824CA8B246D551500267D5F /* NotificationsView.swift */,
-				1824CA8D246D552D00267D5F /* UserView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";

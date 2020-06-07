@@ -256,6 +256,7 @@ struct FavoriteResponse: Codable {
     var messages: ValidateMessages?
     var auth_message: String?
     var message: String?
+    var isOK: Bool?
     
 }
 

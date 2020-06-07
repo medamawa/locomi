@@ -17,6 +17,7 @@ struct ComicInfo: View {
     @State var profile_image: String?
     @State var comic: Comic?
     @State var favoriteIdList: [IdList] = []
+    @State private var isFavorite = false
     @State private var showingModal = false
     @State private var selectedModal: Int?
         
@@ -67,10 +68,20 @@ struct ComicInfo: View {
                     
                     HStack {
                         
-                        Image(systemName: "heart")
-                            .onTapGesture {
-                                let favoriteData = FavoriteData(comic_id: self.comic?.id ?? "")
-                                APIRequest().postFavorite(favoriteData)
+                        if !isFavorite {
+                            Image(systemName: "heart")
+                                .onTapGesture {
+                                    self.isFavorite.toggle()
+                                    let favoriteData = FavoriteData(comic_id: self.comic?.id ?? "")
+                                    APIRequest().postFavorite(favoriteData)
+                            }
+                        } else {
+                            Image(systemName: "heart.fill")
+                                .onTapGesture {
+                                    self.isFavorite.toggle()
+                                    let favoriteData = FavoriteData(comic_id: self.comic?.id ?? "")
+                                    APIRequest().postFavorite(favoriteData)
+                            }
                         }
                         
                         Spacer()
@@ -95,13 +106,24 @@ struct ComicInfo: View {
             .padding(8)
             .onAppear {
                 
-                Utility().wait( { return self.comic?.user_id == nil }) {
+                Utility().wait( { return self.comic?.user_id == nil } ) {
                     
                     APIRequest().getSpecifiedUser(self.comic!.user_id) { User in
                         self.screen_name = User[0].screen_name
                         self.name = User[0].name
                         self.profile_image = User[0].profile_image
                     }
+                    
+                }
+                
+                Utility().wait( { return self.comic?.id == nil } ) {
+                    
+                    let data = FavoriteData(comic_id: self.comic?.id ?? "")
+                    self.isFavorite = APIRequest().postIsFavorite(data)
+                    
+                    print("/////////////////////////////////////")
+                    print(self.isFavorite)
+                    print("/////////////////////////////////////")
                     
                 }
                 

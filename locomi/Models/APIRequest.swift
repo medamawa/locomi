@@ -382,4 +382,43 @@ struct  APIRequest {
         
     }
     
+    func postIsFavorite (_ dataToIsFavorite: FavoriteData) -> Bool {
+        
+        do {
+            
+            var isFavorite: Bool = false
+            
+            guard let url = URL(string: "https://locomi.herokuapp.com/api/isFavorite") else { return false }
+            
+            let token = AccessToken().getToken()
+            
+            var urlRequest = URLRequest(url: url)
+            urlRequest.httpMethod = "POST"
+            urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            urlRequest.addValue("bearer \(token)", forHTTPHeaderField: "Authorization")
+            urlRequest.httpBody = try JSONEncoder().encode(dataToIsFavorite)
+            
+            URLSession.shared.dataTask(with: urlRequest) { (jsonData, _, _) in
+                
+                let data = try! JSONDecoder().decode(FavoriteResponse.self, from: jsonData!)
+                
+                print("////////////////postIsFavorite////////")
+                print(data.isOK)
+                print(dataToIsFavorite)
+                print("////////////////postIsFavorite////////")
+                
+                isFavorite = data.isOK ?? false
+                
+            }.resume()
+            
+            return isFavorite
+            
+        } catch {
+            
+            return false
+            
+        }
+        
+    }
+    
 }
