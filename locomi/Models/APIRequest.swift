@@ -31,7 +31,9 @@ struct  APIRequest {
             }.resume()
             
         } catch {
+            
             return
+            
         }
         
     }

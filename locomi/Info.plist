@@ -66,6 +66,17 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>NSCameraUsageDescription</key>
-	<string>locomi lens requires camera</string>
+	<string>locomi Lens requires camera</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string>com.sogo</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>locomi</string>
+			</array>
+		</dict>
+	</array>
 </dict>
 </plist>
