@@ -12,8 +12,40 @@ struct ARMainView: View {
     
     var body: some View {
         
-        return ARViewContainer()
-            .edgesIgnoringSafeArea(.all)
+        VStack {
+            
+            Text("locomi Lens")
+                .font(.largeTitle)
+            Image(systemName: "camera.viewfinder")
+                .font(.largeTitle)
+            
+        }
+        .onAppear{
+            let url = URL(string: "locomiLens://")!
+            if UIApplication.shared.canOpenURL(url) {
+                if #available(iOS 10.0, *) {
+                    UIApplication.shared.open(url, options: [:], completionHandler: {
+                        (success) in
+                        print("Open \(success)")
+                    })
+                }else{
+                    UIApplication.shared.openURL(url)
+                }
+            }
+        }
+        .onTapGesture {
+            let url = URL(string: "locomi://")!
+            if UIApplication.shared.canOpenURL(url) {
+                if #available(iOS 10.0, *) {
+                    UIApplication.shared.open(url, options: [:], completionHandler: {
+                        (success) in
+                        print("Open \(success)")
+                    })
+                }else{
+                    UIApplication.shared.openURL(url)
+                }
+            }
+        }
         
     }
     
