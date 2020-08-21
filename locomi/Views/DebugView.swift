@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct DebugView: View {
     
@@ -17,11 +18,16 @@ struct DebugView: View {
     @State private var showingFollowers = false
     @State private var showingUsers = false
     @State private var showingComicsList = false
+    @State private var showingNearComicsList = false
     @State private var showingPost = false
     
+    @ObservedObject private var locationManager = LocationManager()
+        
     var body: some View {
         
-        VStack {
+        let coordinate = self.locationManager.location != nil ? self.locationManager.location!.coordinate: CLLocationCoordinate2D()
+        
+        return VStack {
             
             Button(action: { self.showingRegister.toggle() }) {
                 Text("register")
@@ -65,11 +71,19 @@ struct DebugView: View {
                 ComicsList()
             }
             
+            Button(action: { self.showingNearComicsList.toggle() }) {
+                Text("nearComicsList")
+            }.sheet(isPresented: $showingNearComicsList) {
+                NearComicsList()
+            }
+            
             Button(action: { self.showingPost.toggle() }) {
                 Text("post")
             }.sheet(isPresented: $showingPost) {
                 Post()
             }
+            
+            Text("(\(coordinate.latitude), \(coordinate.longitude))")
             
         }
         

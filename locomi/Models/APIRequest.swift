@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct  APIRequest {
+struct APIRequest {
     
     func postRegister (_ dataToRegist: ResisterData) {
         
@@ -271,6 +271,24 @@ struct  APIRequest {
     func getComics(completion: @escaping ([Comic]) -> ()) {
         
         guard let url = URL(string: "https://locomi.herokuapp.com/api/comics/all") else { return }
+        
+        URLSession.shared.dataTask(with: url) { (jsonData, _, _) in
+            
+            let comics = try! JSONDecoder().decode([Comic].self, from: jsonData!)
+            
+            print(comics)
+            
+            DispatchQueue.main.async {
+                completion(comics)
+            }
+            
+        }.resume()
+        
+    }
+    
+    func getNearComics(latitude lat: String, longitude lng: String, completion: @escaping ([Comic]) -> ()) {
+        
+        guard let url = URL(string: "https://locomi.herokuapp.com/api/comics/near?lat=\(lat)&lng=\(lng)") else { return }
         
         URLSession.shared.dataTask(with: url) { (jsonData, _, _) in
             

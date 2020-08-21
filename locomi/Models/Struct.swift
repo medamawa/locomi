@@ -120,6 +120,7 @@ struct PostData: Codable {
     
     var lat: String
     var lng: String
+    var altitude: Double?
     var text: String
     var release: String
     
@@ -161,10 +162,12 @@ struct Comic: Codable, Identifiable {
     var user_id: String
     var lat: Double
     var lng: Double
+    var altitude: Double?
     var text: String
     var deleted_at: String?
     var created_at: String?
     var updated_at: String?
+    var distance: Double?
     
     enum CodingKeys: String, CodingKey {
         
@@ -172,10 +175,12 @@ struct Comic: Codable, Identifiable {
         case user_id
         case lat = "X(location)"
         case lng = "Y(location)"
+        case altitude
         case text
         case deleted_at
         case created_at
         case updated_at
+        case distance
         
     }
     
