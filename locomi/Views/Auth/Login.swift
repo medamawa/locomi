@@ -22,7 +22,7 @@ struct Login: View {
             
             Form {
                 
-                if !APIRequest().getAuth() {
+                if APIRequest().getAuth() {
                     Text("ログイン済みです")
                 }
                 
@@ -57,6 +57,7 @@ struct Login: View {
         }
         
     }
+    
 }
 
 struct Login_Previews: PreviewProvider {

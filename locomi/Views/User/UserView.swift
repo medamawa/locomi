@@ -12,11 +12,15 @@ struct UserView: View {
         
     var body: some View {
         
-        VStack {
+        if UserID().getID() != "" {
             
             UserInfo(id: UserID().getID())
             
+        } else {
+            
+            Login()
         }
+        
         
     }
     

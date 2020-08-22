@@ -331,6 +331,8 @@ struct APIRequest {
         
         URLSession.shared.dataTask(with: url) { (jsonData, _, _) in
             
+            print(jsonData)
+            
             let comics = try! JSONDecoder().decode([Comic].self, from: jsonData!)
             
             print(comics)
