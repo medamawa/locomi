@@ -10,6 +10,8 @@ import SwiftUI
 
 struct Logout: View {
     
+    @Binding var isShowing: Bool
+    
     var body: some View {
         
         NavigationView {
@@ -23,6 +25,8 @@ struct Logout: View {
                         AccessToken().removeToken()
                         RefreshToken().removeToken()
                         UserID().removeID()
+                        // モーダルを閉じる
+                        self.isShowing = false
                         
                     }) {
                         
@@ -39,10 +43,4 @@ struct Logout: View {
         
     }
     
-}
-
-struct Logout_Previews: PreviewProvider {
-    static var previews: some View {
-        Logout()
-    }
 }

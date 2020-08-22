@@ -18,6 +18,7 @@ struct Register: View {
     @State var password_confirmation = ""
     @State var selected = 0
     @State var birthDate = Date()
+    @Binding var isShowing: Bool
     
     var body: some View {
         
@@ -55,6 +56,8 @@ struct Register: View {
                     Button(action: {
                         let registerData = ResisterData(screen_name: self.screen_name, name: self.name, email: self.email, password: self.password, password_confirmation: self.password_confirmation)
                         APIRequest().postRegister(registerData)
+                        // モーダルを閉じる
+                        self.isShowing = false
                     }) {
                         
                         Text("アカウントを登録する")
@@ -67,11 +70,5 @@ struct Register: View {
             
         }
         
-    }
-}
-
-struct Register_Previews: PreviewProvider {
-    static var previews: some View {
-        Register()
     }
 }

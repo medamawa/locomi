@@ -19,6 +19,7 @@ struct Post: View {
     @State var release = "0"
     @State var selected = 0
     @State var birthDate = Date()
+    @Binding var isShowing: Bool
     
     var body: some View {
         
@@ -55,6 +56,8 @@ struct Post: View {
                     Button(action: {
                         let postData = PostData(lat: String(coordinate.latitude), lng: String(coordinate.longitude), altitude: self.locationManager.location?.altitude, text: self.text, release: self.release)
                         APIRequest().post(postData)
+                        // モーダルを閉じる
+                        self.isShowing = false
                     }) {
                         
                         Text("投稿する")
@@ -69,10 +72,4 @@ struct Post: View {
         
     }
     
-}
-
-struct Post_Previews: PreviewProvider {
-    static var previews: some View {
-        Post()
-    }
 }

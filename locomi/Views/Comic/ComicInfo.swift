@@ -164,7 +164,7 @@ struct ComicInfo: View {
             } else if self.selectedModal == 3 {
                 UsersList(title: "いいねしたユーザー", idList: self.favoriteIdList)
             } else if self.selectedModal == 4 {
-                CommentView(comic_id: self.comic?.id ?? "")
+                CommentView(comic_id: self.comic?.id ?? "", isShowing: $showingModal)
             }
             
         }

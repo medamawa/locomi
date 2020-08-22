@@ -9,6 +9,8 @@
 import SwiftUI
 
 struct UserView: View {
+    
+    @State var showingLogin = true
         
     var body: some View {
         
@@ -18,7 +20,7 @@ struct UserView: View {
             
         } else {
             
-            Login()
+            Login(isShowing: $showingLogin)
         }
         
         

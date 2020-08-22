@@ -13,6 +13,7 @@ struct CommentView: View {
     @State var comic_id: String
     @State var text = ""
     @State var release = ""
+    @Binding var isShowing: Bool
     
     var body: some View {
         
@@ -31,6 +32,8 @@ struct CommentView: View {
                     Button(action: {
                         let commentData = CommentData(comic_id: self.comic_id, text: self.text)
                         APIRequest().postComment(commentData)
+                        // モーダルを閉じる
+                        self.isShowing = false
                     }) {
                         
                         Text("コメントする")

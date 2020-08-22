@@ -35,7 +35,7 @@ struct ComicDetail: View {
                 Button(action: { self.showingCommentView.toggle() }) {
                     Text("コメントする")
                 }.sheet(isPresented: $showingCommentView) {
-                    CommentView(comic_id: self.comic?.id ?? "")
+                    CommentView(comic_id: self.comic?.id ?? "", isShowing: $showingCommentView)
                 }
                 
             }

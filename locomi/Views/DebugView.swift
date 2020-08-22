@@ -32,19 +32,19 @@ struct DebugView: View {
             Button(action: { self.showingRegister.toggle() }) {
                 Text("register")
             }.sheet(isPresented: $showingRegister) {
-                Register()
+                Register(isShowing: $showingRegister)
             }
             
             Button(action: { self.showingLogin.toggle() }) {
                 Text("login")
             }.sheet(isPresented: $showingLogin) {
-                Login()
+                Login(isShowing: $showingLogin)
             }
             
             Button(action: { self.showingLogout.toggle() }) {
                 Text("logout")
             }.sheet(isPresented: $showingLogout) {
-                Logout()
+                Logout(isShowing: $showingLogout)
             }
             
             Button(action: { self.showingUsers.toggle() }) {
@@ -80,7 +80,7 @@ struct DebugView: View {
             Button(action: { self.showingPost.toggle() }) {
                 Text("post")
             }.sheet(isPresented: $showingPost) {
-                Post()
+                Post(isShowing: $showingPost)
             }
             
             Text("(\(coordinate.latitude), \(coordinate.longitude))")

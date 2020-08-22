@@ -53,7 +53,7 @@ struct MapLine: View {
                     .padding(.trailing)
                     .sheet(isPresented: $showingPost) {
 
-                        Post()
+                        Post(isShowing: $showingPost)
 
                     }
                     

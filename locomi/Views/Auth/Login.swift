@@ -15,6 +15,7 @@ struct Login: View {
     @State var password = ""
     @State var selected = 0
     @State var birthDate = Date()
+    @Binding var isShowing: Bool
     
     var body: some View {
         
@@ -43,6 +44,8 @@ struct Login: View {
                     Button(action: {
                         let loginData = LoginData(email: self.email, password: self.password);
                         APIRequest().postLogin(loginData)
+                        // モーダルを閉じる
+                        self.isShowing = false
                     }) {
                         
                         Text("ログインする")
@@ -58,10 +61,4 @@ struct Login: View {
         
     }
     
-}
-
-struct Login_Previews: PreviewProvider {
-    static var previews: some View {
-        Login()
-    }
 }
