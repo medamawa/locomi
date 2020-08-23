@@ -29,14 +29,13 @@ struct UserInfo: View {
                 
                 VStack(alignment: .leading) {
                     
-                    HStack {
-                        
-                        Text("\(self.screen_name)")
-                        Text("@\(self.name)")
-                        
-                    }
+                    Text("\(self.screen_name)")
                     
+                    Text("@\(self.name)")
+                        .foregroundColor(.gray)
+                        .font(.callout)
                 }
+
                 
             }
             
