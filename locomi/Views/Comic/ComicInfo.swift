@@ -119,7 +119,7 @@ struct ComicInfo: View {
                 Utility().wait( { return self.comic?.id == nil } ) {
                     
                     let data = FavoriteData(comic_id: self.comic?.id ?? "")
-                    self.isFavorite = APIRequest().postIsFavorite(data)
+//                    self.isFavorite = APIRequest().postIsFavorite(data)   エラーでうまく機能しないので、ひとまずオフにしておく
                     
                     print("/////////////////////////////////////")
                     print(self.isFavorite)
@@ -160,11 +160,11 @@ struct ComicInfo: View {
             if self.selectedModal == 1 {
                 UserInfo(id: self.comic?.user_id ?? "")
             } else if self.selectedModal == 2 {
-                ComicDetail(id: self.comic!.id)
+                ComicDetail(id: self.comic!.id, isShowing: self.$showingModal)
             } else if self.selectedModal == 3 {
                 UsersList(title: "いいねしたユーザー", idList: self.favoriteIdList)
             } else if self.selectedModal == 4 {
-                CommentView(comic_id: self.comic?.id ?? "", isShowing: $showingModal)
+                CommentView(comic_id: self.comic?.id ?? "", isShowing: self.$showingModal)
             }
             
         }

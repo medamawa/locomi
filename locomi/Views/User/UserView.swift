@@ -14,15 +14,18 @@ struct UserView: View {
         
     var body: some View {
         
-        if UserID().getID() != "" {
+        VStack {
             
-            UserInfo(id: UserID().getID())
+            if UserID().getID() != "" {
+                
+                UserInfo(id: UserID().getID())
+                
+            } else {
+                
+                Login(isShowing: $showingLogin)
+            }
             
-        } else {
-            
-            Login(isShowing: $showingLogin)
         }
-        
         
     }
     

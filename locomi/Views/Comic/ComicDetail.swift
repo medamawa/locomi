@@ -14,6 +14,8 @@ struct ComicDetail: View {
     @State var comic: Comic?
     @State var comments: [Comment]?
     @State var showingCommentView = false
+    @State var showingDeleteAlert = false
+    @Binding var isShowing: Bool
     
     var body: some View {
         
@@ -32,10 +34,35 @@ struct ComicDetail: View {
                     
                 }
                 
+                if comic?.user_id == UserID().getID() {
+                    Button(action: { self.showingDeleteAlert.toggle() }) {
+                        Text("削除する")
+                            .foregroundColor(Color.white)
+                            .padding(5)
+                            .background(Color.blue)
+                            .cornerRadius(7)
+                    }.alert(isPresented: $showingDeleteAlert) {
+                        Alert(
+                            title: Text("投稿を削除"),
+                            message: Text("本当にこの投稿を消去してよろしいですか？"),
+                            primaryButton: .destructive(Text("削除")) {
+                                APIRequest().deleteComic(self.id)
+                                // モーダルを閉じる
+                                self.isShowing = false
+                            },
+                            secondaryButton: .cancel(Text("キャンセル"))
+                        )
+                    }
+                }
+                
                 Button(action: { self.showingCommentView.toggle() }) {
                     Text("コメントする")
+                        .foregroundColor(Color.white)
+                        .padding(5)
+                        .background(Color.blue)
+                        .cornerRadius(7)
                 }.sheet(isPresented: $showingCommentView) {
-                    CommentView(comic_id: self.comic?.id ?? "", isShowing: $showingCommentView)
+                    CommentView(comic_id: self.comic?.id ?? "", isShowing: self.$showingCommentView)
                 }
                 
             }
@@ -52,10 +79,4 @@ struct ComicDetail: View {
         
     }
     
-}
-
-struct ComicDetail_Previews: PreviewProvider {
-    static var previews: some View {
-        ComicDetail()
-    }
 }

@@ -164,6 +164,7 @@ struct Comic: Codable, Identifiable {
     var lng: Double
     var altitude: Double?
     var text: String
+    var image: String?
     var deleted_at: String?
     var created_at: String?
     var updated_at: String?
@@ -177,6 +178,7 @@ struct Comic: Codable, Identifiable {
         case lng = "Y(location)"
         case altitude
         case text
+        case image
         case deleted_at
         case created_at
         case updated_at
@@ -193,6 +195,7 @@ struct ComicDetailResponse: Codable {
     var status: String
     var messages: ValidateMessages?
     var auth_message: String?
+    var message: String?
     var data: ComicDetailResponseData?
     
 }
@@ -202,6 +205,15 @@ struct ComicDetailResponseData: Codable {
     var comic: [Comic]
     var comments: [Comment]?
     var favorites: [Favorite]?
+    
+}
+
+// deleteComic
+struct DeleteComicResponse: Codable {
+    
+    var status: String
+    var auth_message: String?
+    var message: String?
     
 }
 

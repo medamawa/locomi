@@ -26,7 +26,7 @@ struct MapLine: View {
 
                     if self.selectedComic != nil {
 
-                        ComicDetail(id: (self.selectedComic?.subtitle)!!)
+                        ComicDetail(id: (self.selectedComic?.subtitle)!!, isShowing: self.$showingComicDetail)
 
                     }
 
@@ -53,7 +53,7 @@ struct MapLine: View {
                     .padding(.trailing)
                     .sheet(isPresented: $showingPost) {
 
-                        Post(isShowing: $showingPost)
+                        Post(isShowing: self.$showingPost)
 
                     }
                     

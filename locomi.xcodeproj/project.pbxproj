@@ -21,12 +21,14 @@
 		1824CA99246E200900267D5F /* SpecifiedUserComicsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1824CA98246E200900267D5F /* SpecifiedUserComicsList.swift */; };
 		1848D1A02459E02800592B76 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1848D19F2459E02800592B76 /* UserInfo.swift */; };
 		1848D1A2245B207D00592B76 /* Follows.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1848D1A1245B207D00592B76 /* Follows.swift */; };
+		18977B9624FBAF9B00F4207D /* UserInformations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18977B9524FBAF9B00F4207D /* UserInformations.swift */; };
+		18AC28B124F562FA004BA262 /* DeleteComic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AC28B024F562FA004BA262 /* DeleteComic.swift */; };
+		18AC28B324F564A8004BA262 /* ComicInformations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AC28B224F564A8004BA262 /* ComicInformations.swift */; };
 		18B6FAFE245B2A4F005AE556 /* Follow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B6FAFD245B2A4F005AE556 /* Follow.swift */; };
 		18B6FB00245B390E005AE556 /* Followers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B6FAFF245B390E005AE556 /* Followers.swift */; };
 		18B6FB02245C4D59005AE556 /* ComicDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B6FB01245C4D59005AE556 /* ComicDetail.swift */; };
 		18CDE222246F7C9A00239C84 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CDE221246F7C9A00239C84 /* MainView.swift */; };
 		18CDE224246F7F0400239C84 /* Logout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CDE223246F7F0400239C84 /* Logout.swift */; };
-		18D262E524E56C8F003972F0 /* FavoriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D262E424E56C8F003972F0 /* FavoriteViewModel.swift */; };
 		18D28ECA24EF858300BDEF49 /* NearComicsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D28EC924EF858300BDEF49 /* NearComicsList.swift */; };
 		18D6BB1B24567758003EBA1E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D6BB1A24567758003EBA1E /* AppDelegate.swift */; };
 		18D6BB1D24567758003EBA1E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D6BB1C24567758003EBA1E /* SceneDelegate.swift */; };
@@ -65,12 +67,14 @@
 		1824CA98246E200900267D5F /* SpecifiedUserComicsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecifiedUserComicsList.swift; sourceTree = "<group>"; };
 		1848D19F2459E02800592B76 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		1848D1A1245B207D00592B76 /* Follows.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Follows.swift; sourceTree = "<group>"; };
+		18977B9524FBAF9B00F4207D /* UserInformations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInformations.swift; sourceTree = "<group>"; };
+		18AC28B024F562FA004BA262 /* DeleteComic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteComic.swift; sourceTree = "<group>"; };
+		18AC28B224F564A8004BA262 /* ComicInformations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicInformations.swift; sourceTree = "<group>"; };
 		18B6FAFD245B2A4F005AE556 /* Follow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Follow.swift; sourceTree = "<group>"; };
 		18B6FAFF245B390E005AE556 /* Followers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Followers.swift; sourceTree = "<group>"; };
 		18B6FB01245C4D59005AE556 /* ComicDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicDetail.swift; sourceTree = "<group>"; };
 		18CDE221246F7C9A00239C84 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		18CDE223246F7F0400239C84 /* Logout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logout.swift; sourceTree = "<group>"; };
-		18D262E424E56C8F003972F0 /* FavoriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewModel.swift; sourceTree = "<group>"; };
 		18D28EC924EF858300BDEF49 /* NearComicsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearComicsList.swift; sourceTree = "<group>"; };
 		18D6BB1724567758003EBA1E /* locomi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = locomi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18D6BB1A24567758003EBA1E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -127,6 +131,7 @@
 				1824CA8F246D656300267D5F /* CommentInfo.swift */,
 				1824CA3E2467CCE100267D5F /* CommentView.swift */,
 				18D6BB4D2456C59C003EBA1E /* Post.swift */,
+				18AC28B024F562FA004BA262 /* DeleteComic.swift */,
 			);
 			path = Comic;
 			sourceTree = "<group>";
@@ -180,12 +185,14 @@
 			path = AR;
 			sourceTree = "<group>";
 		};
-		18D262E324E56B97003972F0 /* ViewModels */ = {
+		18977B9724FBB00A00F4207D /* Debug */ = {
 			isa = PBXGroup;
 			children = (
-				18D262E424E56C8F003972F0 /* FavoriteViewModel.swift */,
+				1824CA87246D546E00267D5F /* DebugView.swift */,
+				18977B9524FBAF9B00F4207D /* UserInformations.swift */,
+				18AC28B224F564A8004BA262 /* ComicInformations.swift */,
 			);
-			path = ViewModels;
+			path = Debug;
 			sourceTree = "<group>";
 		};
 		18D6247924829D1F00176B1F /* Notification */ = {
@@ -220,7 +227,6 @@
 				18D6BB4224567918003EBA1E /* Coordinators */,
 				18D6BB3724567884003EBA1E /* Views */,
 				18D6BB2E245677D1003EBA1E /* Models */,
-				18D262E324E56B97003972F0 /* ViewModels */,
 				18D6BB1E24567758003EBA1E /* ContentView.swift */,
 				18D6BB1A24567758003EBA1E /* AppDelegate.swift */,
 				18D6BB1C24567758003EBA1E /* SceneDelegate.swift */,
@@ -254,6 +260,8 @@
 		18D6BB3724567884003EBA1E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				18CDE221246F7C9A00239C84 /* MainView.swift */,
+				18977B9724FBB00A00F4207D /* Debug */,
 				1824CA94246D919B00267D5F /* Auth */,
 				1824CA93246D918100267D5F /* Follow */,
 				1824CA92246D916600267D5F /* User */,
@@ -261,8 +269,6 @@
 				1824CA95246D91AD00267D5F /* Map */,
 				1824CA96246D91E200267D5F /* AR */,
 				18D6247924829D1F00176B1F /* Notification */,
-				18CDE221246F7C9A00239C84 /* MainView.swift */,
-				1824CA87246D546E00267D5F /* DebugView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -365,6 +371,7 @@
 				18B6FAFE245B2A4F005AE556 /* Follow.swift in Sources */,
 				1848D1A2245B207D00592B76 /* Follows.swift in Sources */,
 				1824CA3F2467CCE100267D5F /* CommentView.swift in Sources */,
+				18AC28B324F564A8004BA262 /* ComicInformations.swift in Sources */,
 				18B6FB02245C4D59005AE556 /* ComicDetail.swift in Sources */,
 				18D6BB4424567930003EBA1E /* Coordinator.swift in Sources */,
 				18D6BB30245677FA003EBA1E /* Struct.swift in Sources */,
@@ -380,9 +387,10 @@
 				18D6BB1B24567758003EBA1E /* AppDelegate.swift in Sources */,
 				18D6BB1D24567758003EBA1E /* SceneDelegate.swift in Sources */,
 				1824CA81246D162E00267D5F /* MapLine.swift in Sources */,
+				18AC28B124F562FA004BA262 /* DeleteComic.swift in Sources */,
 				18D6BB3D245678CA003EBA1E /* UsersList.swift in Sources */,
+				18977B9624FBAF9B00F4207D /* UserInformations.swift in Sources */,
 				18D6BB3224567825003EBA1E /* APIRequest.swift in Sources */,
-				18D262E524E56C8F003972F0 /* FavoriteViewModel.swift in Sources */,
 				1824CA392467098800267D5F /* Utility.swift in Sources */,
 				18D6BB5024586B63003EBA1E /* SpecifiedUser.swift in Sources */,
 				18D6BB1F24567758003EBA1E /* ContentView.swift in Sources */,
@@ -541,7 +549,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.3;
+				MARKETING_VERSION = 1.0.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sogo.locomiapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -562,7 +570,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.3;
+				MARKETING_VERSION = 1.0.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sogo.locomiapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

@@ -193,6 +193,7 @@ struct APIRequest {
         guard let url = URL(string: "https://locomi.herokuapp.com/api/users/\(id)") else { return }
         
         URLSession.shared.dataTask(with: url) { (data, _, _) in
+            print(data, url)
             
             let user = try! JSONDecoder().decode([User].self, from: data!)
             
@@ -268,7 +269,7 @@ struct APIRequest {
         
     }
     
-    func getComics(completion: @escaping ([Comic]) -> ()) {
+    func getComics (completion: @escaping ([Comic]) -> ()) {
         
         guard let url = URL(string: "https://locomi.herokuapp.com/api/comics/all") else { return }
         
@@ -286,7 +287,7 @@ struct APIRequest {
         
     }
     
-    func getNearComics(latitude lat: String, longitude lng: String, completion: @escaping ([Comic]) -> ()) {
+    func getNearComics (latitude lat: String, longitude lng: String, completion: @escaping ([Comic]) -> ()) {
         
         guard let url = URL(string: "https://locomi.herokuapp.com/api/comics/near?lat=\(lat)&lng=\(lng)") else { return }
         
@@ -304,12 +305,14 @@ struct APIRequest {
         
     }
     
-    func getComicDetail (_ id: String, completion: @escaping (ComicDetailResponseData) -> ()) {
+    func getComicDetail (_ id: String = "none", completion: @escaping (ComicDetailResponseData) -> ()) {
         
         guard let url = URL(string: "https://locomi.herokuapp.com/api/comics/all/\(id)") else { return }
+        print(url)
         
         URLSession.shared.dataTask(with: url) { (jsonData, _, _) in
             
+            print(jsonData, url)
             let comic = try! JSONDecoder().decode(ComicDetailResponse.self, from: jsonData!)
             let comic_data = comic.data
             
@@ -325,7 +328,7 @@ struct APIRequest {
         
     }
     
-    func getSpecifiedUserComics(_ user_id: String, completion: @escaping ([Comic]) -> ()) {
+    func getSpecifiedUserComics (_ user_id: String, completion: @escaping ([Comic]) -> ()) {
         
         guard let url = URL(string: "https://locomi.herokuapp.com/api/comics/user/\(user_id)") else { return }
         
@@ -344,6 +347,34 @@ struct APIRequest {
         }.resume()
         
     }
+    
+    func deleteComic (_ comic_id: String) {
+           
+           do {
+               
+               guard let url = URL(string: "https://locomi.herokuapp.com/api/comic/\(comic_id)") else { return }
+               
+               let token = AccessToken().getToken()
+               
+               var urlRequest = URLRequest(url: url)
+               urlRequest.httpMethod = "DELETE"
+               urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
+               urlRequest.addValue("bearer \(token)", forHTTPHeaderField: "Authorization")
+               
+               URLSession.shared.dataTask(with: urlRequest) { (jsonData, _, error) in
+                   
+                   let data = try! JSONDecoder().decode(DeleteComicResponse.self, from: jsonData!)
+
+                   print(data)
+                   print(type(of: data))
+                   
+               }.resume()
+               
+           } catch {
+               return
+           }
+           
+       }
     
     func postComment (_ dataToComment: CommentData) {
         
