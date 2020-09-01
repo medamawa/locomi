@@ -69,6 +69,7 @@ struct APIRequest {
     
     func getAuth () -> Bool {
         
+        let semaphore = DispatchSemaphore(value: 0)
         var isOK: Bool = false
         
         guard let url = URL(string: "https://locomi.herokuapp.com/api/refresh-token") else { return false }
@@ -84,13 +85,6 @@ struct APIRequest {
             
             let data = try! JSONDecoder().decode(AuthResponse.self, from: (jsonData)!)
             
-            print("######@@@@@@@####")
-            print(data)
-            print(data.data?.access_token)
-            print(data.data?.refresh_token)
-            print(data.data?.id)
-            print("######@@@@@@@####")
-            
             if data.status == "success" {
                 AccessToken().saveToken(token: data.data?.access_token ?? "")
                 RefreshToken().saveToken(token: data.data?.refresh_token ?? "")
@@ -98,7 +92,11 @@ struct APIRequest {
                 isOK = true
             }
             
+            semaphore.signal()
         }.resume()
+        
+        _ = semaphore.wait(timeout: DispatchTime.distantFuture)
+        print(isOK)
         
         return isOK
         

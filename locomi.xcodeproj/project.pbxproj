@@ -21,6 +21,7 @@
 		1824CA99246E200900267D5F /* SpecifiedUserComicsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1824CA98246E200900267D5F /* SpecifiedUserComicsList.swift */; };
 		1848D1A02459E02800592B76 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1848D19F2459E02800592B76 /* UserInfo.swift */; };
 		1848D1A2245B207D00592B76 /* Follows.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1848D1A1245B207D00592B76 /* Follows.swift */; };
+		1865DC9F24FEA96A006036A8 /* AuthElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1865DC9E24FEA96A006036A8 /* AuthElements.swift */; };
 		18977B9624FBAF9B00F4207D /* UserInformations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18977B9524FBAF9B00F4207D /* UserInformations.swift */; };
 		18AC28B124F562FA004BA262 /* DeleteComic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AC28B024F562FA004BA262 /* DeleteComic.swift */; };
 		18AC28B324F564A8004BA262 /* ComicInformations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AC28B224F564A8004BA262 /* ComicInformations.swift */; };
@@ -67,6 +68,7 @@
 		1824CA98246E200900267D5F /* SpecifiedUserComicsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecifiedUserComicsList.swift; sourceTree = "<group>"; };
 		1848D19F2459E02800592B76 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		1848D1A1245B207D00592B76 /* Follows.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Follows.swift; sourceTree = "<group>"; };
+		1865DC9E24FEA96A006036A8 /* AuthElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthElements.swift; sourceTree = "<group>"; };
 		18977B9524FBAF9B00F4207D /* UserInformations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInformations.swift; sourceTree = "<group>"; };
 		18AC28B024F562FA004BA262 /* DeleteComic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteComic.swift; sourceTree = "<group>"; };
 		18AC28B224F564A8004BA262 /* ComicInformations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicInformations.swift; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 		1824CA94246D919B00267D5F /* Auth */ = {
 			isa = PBXGroup;
 			children = (
+				1865DC9E24FEA96A006036A8 /* AuthElements.swift */,
 				18D6BB3824567892003EBA1E /* Register.swift */,
 				18D6BB3A245678AE003EBA1E /* Login.swift */,
 				18CDE223246F7F0400239C84 /* Logout.swift */,
@@ -227,7 +230,6 @@
 				18D6BB4224567918003EBA1E /* Coordinators */,
 				18D6BB3724567884003EBA1E /* Views */,
 				18D6BB2E245677D1003EBA1E /* Models */,
-				18D6BB1E24567758003EBA1E /* ContentView.swift */,
 				18D6BB1A24567758003EBA1E /* AppDelegate.swift */,
 				18D6BB1C24567758003EBA1E /* SceneDelegate.swift */,
 				18D6BB202456775D003EBA1E /* Assets.xcassets */,
@@ -260,6 +262,7 @@
 		18D6BB3724567884003EBA1E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				18D6BB1E24567758003EBA1E /* ContentView.swift */,
 				18CDE221246F7C9A00239C84 /* MainView.swift */,
 				18977B9724FBB00A00F4207D /* Debug */,
 				1824CA94246D919B00267D5F /* Auth */,
@@ -370,6 +373,7 @@
 				18D6BB4124567904003EBA1E /* MapView.swift in Sources */,
 				18B6FAFE245B2A4F005AE556 /* Follow.swift in Sources */,
 				1848D1A2245B207D00592B76 /* Follows.swift in Sources */,
+				1865DC9F24FEA96A006036A8 /* AuthElements.swift in Sources */,
 				1824CA3F2467CCE100267D5F /* CommentView.swift in Sources */,
 				18AC28B324F564A8004BA262 /* ComicInformations.swift in Sources */,
 				18B6FB02245C4D59005AE556 /* ComicDetail.swift in Sources */,
