@@ -20,6 +20,7 @@ struct Post: View {
     @State var selected = 0
     @State var birthDate = Date()
     @Binding var isShowing: Bool
+    @State private var loginIsShowing: Bool = false
     
     var body: some View {
         
@@ -30,40 +31,56 @@ struct Post: View {
             
             Form {
                 
-                Section(header: Text("位置情報、標高")) {
+                if APIRequest().getAuth() {
+                    Text("ログイン済みです")
                     
-                    Text("緯度：\(coordinate.latitude)")
-                    Text("経度：\(coordinate.longitude)")
-                    Text("標高：\(altitude)")
-                    
-                }
-                
-                Section(header: Text("本文を入力")) {
-                    
-                    TextField("投稿の本文を入力してください", text: $text)
-                    
-                }
-                
-//                サーバー側で公開範囲が未実装なので、0で固定しておく
-//                Section(header: Text("公開範囲を入力")) {
-//
-//                    TextField("公開範囲を入力して下さい（０を入力してください）", text: $release)
-//
-//                }
-                
-                Section {
-                    
-                    Button(action: {
-                        let postData = PostData(lat: String(coordinate.latitude), lng: String(coordinate.longitude), altitude: self.locationManager.location?.altitude, text: self.text, release: self.release)
-                        APIRequest().post(postData)
-                        // モーダルを閉じる
-                        self.isShowing = false
-                    }) {
+                    Section(header: Text("位置情報、標高")) {
                         
-                        Text("投稿する")
+                        Text("緯度：\(coordinate.latitude)")
+                        Text("経度：\(coordinate.longitude)")
+                        Text("標高：\(altitude)")
                         
                     }
                     
+                    Section(header: Text("本文を入力")) {
+                        
+                        TextField("投稿の本文を入力してください", text: $text)
+                        
+                    }
+                    
+                    //                サーバー側で公開範囲が未実装なので、0で固定しておく
+                    //                Section(header: Text("公開範囲を入力")) {
+                    //
+                    //                    TextField("公開範囲を入力して下さい（０を入力してください）", text: $release)
+                    //
+                    //                }
+                    
+                    Section {
+                        
+                        Button(action: {
+                            let postData = PostData(lat: String(coordinate.latitude), lng: String(coordinate.longitude), altitude: self.locationManager.location?.altitude, text: self.text, release: self.release)
+                            APIRequest().post(postData)
+                            // モーダルを閉じる
+                            self.isShowing = false
+                        }) {
+                            
+                            Text("投稿する")
+                            
+                        }
+                        
+                    }
+                    
+                } else {
+                    Text("ログインしていません")
+                    
+                    Section {
+                        Button(action: { self.loginIsShowing.toggle() }) {
+                            Text("ログインする")
+                                .sheet(isPresented: $loginIsShowing) {
+                                    Login(isShowing: self.$loginIsShowing)
+                                }
+                        }
+                    }
                 }
                 
             }.navigationBarTitle("投稿の作成")

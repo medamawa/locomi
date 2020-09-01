@@ -56,6 +56,10 @@ struct Register: View {
                     Button(action: {
                         let registerData = ResisterData(screen_name: self.screen_name, name: self.name, email: self.email, password: self.password, password_confirmation: self.password_confirmation)
                         APIRequest().postRegister(registerData)
+                        // (恐らく)登録処理が終了する前にログインしようとしているので上手くいかない。
+                        // 新規登録したアカウントにログインする
+                        let loginData = LoginData(email: self.email, password: self.password);
+                        APIRequest().postLogin(loginData)
                         // モーダルを閉じる
                         self.isShowing = false
                     }) {
