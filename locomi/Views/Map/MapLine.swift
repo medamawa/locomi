@@ -44,17 +44,17 @@ struct MapLine: View {
                         self.showingPost.toggle()
                     }) {
                         Image(systemName: "plus")
+                            .font(Font.largeTitle.weight(.bold))
                     }
                     .padding()
-                    .background(Color.black.opacity(0.75))
+                    .background(Color.blue)
                     .foregroundColor(.white)
-                    .font(.title)
                     .clipShape(Circle())
+                    .shadow(radius: 10)
                     .padding(.trailing)
+                    .padding(.bottom)
                     .sheet(isPresented: $showingPost) {
-
                         Post(isShowing: self.$showingPost)
-
                     }
                     
                 }

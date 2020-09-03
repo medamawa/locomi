@@ -12,6 +12,10 @@ struct MainView: View {
     
     @State var index = 0
     
+    init() {
+        UITabBar.appearance().isTranslucent = false
+    }
+    
     var body: some View {
         
         TabView {
@@ -64,7 +68,6 @@ struct MainView: View {
                         .font(.title)
                 })
                 .tag(0)
-//                .edgesIgnoringSafeArea(.top)
             
         }
         
