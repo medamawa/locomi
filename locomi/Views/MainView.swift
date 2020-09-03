@@ -16,16 +16,6 @@ struct MainView: View {
         
         TabView {
             
-            DebugView()
-                .tabItem({
-                    Image(systemName: Constants.TabBarImageName.tabBarD)
-                        .font(.title)
-                    Text("\(Constants.TabBarText.tabBarD)")
-                        .font(.title)
-                })
-                .tag(0)
-                .edgesIgnoringSafeArea(.top)
-            
             MapLine()
                 .tabItem({
                     Image(systemName: Constants.TabBarImageName.tabBar0)
@@ -55,7 +45,17 @@ struct MainView: View {
 //                })
 //                .tag(0)
 //                .edgesIgnoringSafeArea(.top)
-
+            
+            DebugView()
+                .tabItem({
+                    Image(systemName: Constants.TabBarImageName.tabBarD)
+                        .font(.title)
+                    Text("\(Constants.TabBarText.tabBarD)")
+                        .font(.title)
+                })
+                .tag(0)
+                .edgesIgnoringSafeArea(.top)
+            
             UserView()
                 .tabItem({
                     Image(systemName: Constants.TabBarImageName.tabBar3)
