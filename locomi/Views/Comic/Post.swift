@@ -13,8 +13,7 @@ struct Post: View {
     
     @ObservedObject private var locationManager = LocationManager()
     @State var showText = false
-    @State var latString = ""
-    @State var lngString = ""
+    @State var altitudeCorrection: Double = 0
     @State var text = ""
     @State var release = "0"
     @State var selected = 0
@@ -38,7 +37,8 @@ struct Post: View {
                         
                         Text("緯度：\(coordinate.latitude)")
                         Text("経度：\(coordinate.longitude)")
-                        Text("標高：\(altitude)")
+                        Text("標高：\(altitude + altitudeCorrection)m (\(altitudeCorrection))")
+                        Slider(value: $altitudeCorrection, in: -10 ... 20, minimumValueLabel: Text("-10"), maximumValueLabel: Text("20"), label: { EmptyView() })
                         
                     }
                     
@@ -58,7 +58,8 @@ struct Post: View {
                     Section {
                         
                         Button(action: {
-                            let postData = PostData(lat: String(coordinate.latitude), lng: String(coordinate.longitude), altitude: self.locationManager.location?.altitude, text: self.text, release: self.release)
+                            // altitudeはnilの場合はnilで渡すように条件分岐を行っている
+                            let postData = PostData(lat: String(coordinate.latitude), lng: String(coordinate.longitude), altitude: self.locationManager.location?.altitude != nil ? altitude + altitudeCorrection : nil, text: self.text, release: self.release)
                             APIRequest().post(postData)
                             // モーダルを閉じる
                             self.isShowing = false
@@ -89,4 +90,10 @@ struct Post: View {
         
     }
     
+}
+
+struct Post_Previews: PreviewProvider {
+    static var previews: some View {
+        Post(isShowing: .constant(true))
+    }
 }
