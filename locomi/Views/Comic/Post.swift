@@ -37,8 +37,9 @@ struct Post: View {
                         
                         Text("緯度：\(coordinate.latitude)")
                         Text("経度：\(coordinate.longitude)")
-                        Text("標高：\(altitude + altitudeCorrection)m (\(altitudeCorrection))")
-                        Slider(value: $altitudeCorrection, in: -10 ... 20, minimumValueLabel: Text("-10"), maximumValueLabel: Text("20"), label: { EmptyView() })
+                        Text("標高：\(altitude + altitudeCorrection)m")
+//                        標高を調整できる（デバッグ用）
+//                        Slider(value: $altitudeCorrection, in: -10 ... 20, minimumValueLabel: Text("-10"), maximumValueLabel: Text("20"), label: { EmptyView() })
                         
                     }
                     
@@ -58,8 +59,10 @@ struct Post: View {
                     Section {
                         
                         Button(action: {
-                            // altitudeはnilの場合はnilで渡すように条件分岐を行っている
-                            let postData = PostData(lat: String(coordinate.latitude), lng: String(coordinate.longitude), altitude: self.locationManager.location?.altitude != nil ? altitude + altitudeCorrection : nil, text: self.text, release: self.release)
+//                            altitudeはnilの場合はnilで渡すように条件分岐を行っている
+//                            標高を調整できる（デバッグ用）
+//                            let postData = PostData(lat: String(coordinate.latitude), lng: String(coordinate.longitude), altitude: self.locationManager.location?.altitude != nil ? altitude + altitudeCorrection : nil, text: self.text, release: self.release)
+                            let postData = PostData(lat: String(coordinate.latitude), lng: String(coordinate.longitude), altitude: self.locationManager.location?.altitude, text: self.text, release: self.release)
                             APIRequest().post(postData)
                             // モーダルを閉じる
                             self.isShowing = false
